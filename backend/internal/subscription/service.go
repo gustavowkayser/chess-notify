@@ -23,7 +23,9 @@ func (s *Service) Subscribe(tournamentUrl, userId string) (*string, error) {
 
 	// If not, create a new one
 	if !exists {
-		tournament, err := s.chessresultsProvider.GetTournament(tournamentUrl)
+		var err error
+
+		tournament, err = s.chessresultsProvider.GetTournament(tournamentUrl)
 
 		if err != nil {
 			return nil, err
@@ -40,4 +42,21 @@ func (s *Service) Subscribe(tournamentUrl, userId string) (*string, error) {
 	id, err := s.repository.CreateSubscription(tournament.ID, userId)
 
 	return id, err
+}
+
+func (s *Service) Unsubscribe(tournamentId, userToken string) bool {
+
+	subscription, found := s.repository.GetSubscriptionByTournamentAndUser(tournamentId, userToken)
+	
+	if !found {
+		return false
+	}
+
+	err := s.repository.DeactivateSubscription(subscription.ID)
+	
+	if err != nil {
+		return false
+	}
+
+	return true
 }

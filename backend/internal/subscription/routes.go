@@ -6,4 +6,5 @@ import (
 
 func ApplyRoutes(router *gin.RouterGroup, handler *Handler) {
 	router.POST("/subscribe", handler.Subscribe)
+	router.DELETE("/unsubscribe/:id", handler.Unsubscribe)
 }

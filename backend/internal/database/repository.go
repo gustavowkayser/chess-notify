@@ -52,7 +52,7 @@ func (r *Repository) CreateSubscription(tournamentId, userId string) (*string, e
 }
 
 func (r *Repository) DeactivateSubscription(id string) error {
-	_, err := gorm.G[Subscription](r.db).Update(r.ctx, "active", false)
+	_, err := gorm.G[Subscription](r.db).Where("id = ?", id).Delete(r.ctx)
 
 	return err
 }
@@ -65,4 +65,13 @@ func (r *Repository) GetActiveTournaments() (*[]Tournament, error) {
 	}
 
 	return &tournaments, nil
+}
+
+func (r *Repository) GetSubscriptionByTournamentAndUser(tournamentId, userToken string) (*Subscription, bool) {
+	subscription, err := gorm.G[Subscription](r.db).Where(
+		"tournament_id = ? AND user_id = ?", 
+		tournamentId, 
+		userToken).First(r.ctx)
+	
+	return &subscription, err == nil
 }

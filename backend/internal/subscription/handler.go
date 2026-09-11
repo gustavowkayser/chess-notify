@@ -74,5 +74,30 @@ func (h *Handler) Unsubscribe(c *gin.Context) {
 	userToken := h.HandleAuthentication(c)
 	if userToken == nil { return }
 
-	err := h.service.Unsubscribe(tournamentId)
+	tournamentId, found := c.Params.Get("id")
+	if !found {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"success": false,
+			"message": "Tournament ID not found",
+		})
+		return
+	}
+
+	success := h.service.Unsubscribe(tournamentId, *userToken)
+
+	if !success {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"success": false,
+			"message": "An error ocurred trying to unsubscribe",
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"message": "Unsubscribed successfuly from tournament",
+		"data": gin.H{
+			"tournament_id": tournamentId,
+		},
+	})
 }
