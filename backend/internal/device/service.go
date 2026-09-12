@@ -3,6 +3,7 @@ package device
 import (
 	"context"
 	"crypto/sha256"
+	"encoding/hex"
 
 	"github.com/google/uuid"
 )
@@ -19,15 +20,15 @@ func NewService(repository Repository) *Service {
 
 func (s *Service) RegisterDevice(ctx context.Context, req RegisterDeviceRequest) (*Device, error) {
 	id := uuid.NewString()
-	hash := sha256.New()
 
-	credentialHash := id + req.PushToken + req.AppVersion + req.Platform
+	credential := id + req.PushToken + req.AppVersion + req.Platform
 
-	hash.Write([]byte(credentialHash))
+	hash := sha256.Sum256([]byte(credential))
+	credentialHash := hex.EncodeToString(hash[:])
 
 	device := Device{
 		ID: id,
-		CredentialHash: string(hash.Sum(nil)),
+		CredentialHash: credentialHash,
 		PushToken: req.PushToken,
 		AppVersion: req.AppVersion,
 		Platform: req.Platform,

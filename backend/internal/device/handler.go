@@ -34,7 +34,7 @@ func (h *Handler) Register(w http.ResponseWriter, r *http.Request) {
 	
 	response, err := wr.EncodeResponse(RegisterDeviceResponse{
 		DeviceID: device.ID,
-		DeviceToken: device.PushToken,
+		DeviceToken: device.CredentialHash,
 	})
 
 	if err != nil {

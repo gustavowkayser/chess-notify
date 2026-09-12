@@ -23,11 +23,11 @@ func (r *repository) Create(ctx context.Context, device *Device) error {
 	query := `
 		INSERT INTO devices (
 			id,
-			credential_hash,
+			credentials_hash,
 			push_token,
 			platform,
-			app_version,
-		) VALUES ($1, $2, $3, $4, $5)
+			app_version
+		) VALUES ($1, $2, $3, $4, $5);
 	`
 
 	_, err := r.db.ExecContext(
@@ -45,7 +45,7 @@ func (r *repository) Create(ctx context.Context, device *Device) error {
 
 func (r *repository) FindByID(ctx context.Context, id string) (*Device, error) {
 	query := `
-		SELECT * FROM devices WHERE id = $1
+		SELECT * FROM devices WHERE id = $1;
 	`
 
 	var device Device
@@ -60,11 +60,30 @@ func (r *repository) FindByID(ctx context.Context, id string) (*Device, error) {
 
 func (r *repository) FindByCredentialsHash(ctx context.Context, hash string) (*Device, error) {
 	query := `
-		SELECT * FROM devices WHERE credentials_hash = $1
+		SELECT 
+		id, 
+		push_token, 
+		platform, 
+		credentials_hash, 
+		app_version, 
+		active 
+		FROM devices 
+		WHERE credentials_hash = $1;
 	`
 
 	var device Device
-	err := r.db.QueryRowContext(ctx, query, hash).Scan(&device)
+	err := r.db.QueryRowContext(
+		ctx, 
+		query, 
+		hash,
+	).Scan(
+		&device.ID,
+		&device.PushToken,
+		&device.Platform,
+		&device.CredentialHash,
+		&device.AppVersion,
+		&device.Active,
+	)
 
 	if err != nil {
 		return nil, err

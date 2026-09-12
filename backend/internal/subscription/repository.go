@@ -24,7 +24,7 @@ func (r *repository) Create(ctx context.Context, subscription *Subscription) err
 			device_id,
 			tournament_id
 		) VALUES ($1, $2, $3)
-		RETURNING id
+		RETURNING id;
 	`
 
 	_, err := r.db.ExecContext(ctx, query, subscription.ID, subscription.DeviceID, subscription.TournamentID)
