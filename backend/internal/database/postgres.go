@@ -2,11 +2,11 @@ package database
 
 import (
 	"database/sql"
-	_ "modernc.org/sqlite"
+	_ "github.com/lib/pq"
 )
 
-func NewSqlite(url string) (*sql.DB, error) {
-	db, err := sql.Open("sqlite", url)
+func NewPostgres(url string) (*sql.DB, error) {
+	db, err := sql.Open("postgres", url)
 
 	if err != nil {
 		return nil, err

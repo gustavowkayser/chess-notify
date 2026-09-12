@@ -1,103 +1,59 @@
 package subscription
 
 import (
+	"chess-notify/internal/middleware"
+	"chess-notify/internal/utils"
 	"net/http"
-	"strings"
-
-	"github.com/gin-gonic/gin"
 )
 
 type Handler struct {
 	service *Service
 }
 
-type subscribeRequest struct {
-	TournamentUrl string `json:"tournament_url" binding:"required"`
-}
-
-func NewHandler(service *Service) Handler {
-	return Handler{
+func NewHandler(service *Service) *Handler {
+	return &Handler{
 		service: service,
 	}
 }
 
-func (h *Handler) HandleAuthentication(c *gin.Context) *string {
-	userToken, found := strings.CutPrefix(c.GetHeader("Authorization"), "Bearer ")
+func (h *Handler) CreateSubscription(w http.ResponseWriter, r *http.Request) {
+	var req CreateSubscriptionRequest
 
-	if !found {
-		c.JSON(http.StatusUnauthorized, gin.H{
-			"success": false,
-			"message": "Invalid authentication",
-		})
-		return nil
-	}
+	wr := utils.NewWriteReader[CreateSubscriptionRequest, CreateSubscriptionResponse](r, w)
+	req = *wr.DecodeRequest(req)
 
-	return &userToken
-}
+	device := middleware.DeviceFromContext(r.Context())
 
-func (h *Handler) Subscribe(c *gin.Context) {
-	var r subscribeRequest
-
-	if err := c.BindJSON(&r); err != nil {
-		c.JSON(http.StatusUnprocessableEntity, gin.H{
-			"success": false,
-			"message": "Invalid body",
-			"error": err.Error(),
-		})
-		return
-	}
-
-	userToken := h.HandleAuthentication(c)
-	if userToken == nil { return }
-
-	id, err := h.service.Subscribe(r.TournamentUrl, *userToken)
+	subscription, err := h.service.CreateSubscription(r.Context(), CreateSubscriptionInput{
+		DeviceID: device.ID,
+		TournamentID: req.TournamentId,
+	})
 
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"success": false,
-			"message": "Could not subscribe to tournament",
-			"error": err.Error(),
-		})
+		wr.WriteError(
+			http.StatusBadRequest,
+			"Error trying to subscribe to tournament",
+			err.Error(),
+		)
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"success": true,
-		"message": "Subscribed successfuly to tournament",
-		"data": gin.H{
-			"tournament_id": id,
-		},
+	response, err := wr.EncodeResponse(CreateSubscriptionResponse{
+		SubscriptionId: subscription.ID,
 	})
-}
 
-func (h *Handler) Unsubscribe(c *gin.Context) {
-	userToken := h.HandleAuthentication(c)
-	if userToken == nil { return }
-
-	tournamentId, found := c.Params.Get("id")
-	if !found {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"success": false,
-			"message": "Tournament ID not found",
-		})
+	if err != nil {
+		wr.WriteError(
+			http.StatusBadRequest,
+			"Error trying to subscribe to tournament",
+			err.Error(),
+		)
 		return
 	}
 
-	success := h.service.Unsubscribe(tournamentId, *userToken)
-
-	if !success {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"success": false,
-			"message": "An error ocurred trying to unsubscribe",
-		})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{
-		"success": true,
-		"message": "Unsubscribed successfuly from tournament",
-		"data": gin.H{
-			"tournament_id": tournamentId,
-		},
-	})
+	wr.WriteResponse(
+		http.StatusOK, 
+		"Subscribed to the tournament successfuly",
+		response,
+	)
 }

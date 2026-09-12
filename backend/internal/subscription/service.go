@@ -1,62 +1,38 @@
 package subscription
 
 import (
-	"chess-notify/internal/chessresults"
-	"chess-notify/internal/database"
+	"context"
+
+	"github.com/google/uuid"
 )
 
+type CreateSubscriptionInput struct {
+	DeviceID string
+	TournamentID string
+}
+
 type Service struct {
-	chessresultsProvider *chessresults.ChessResultsProvider
-	repository           *database.Repository
+	repository Repository
 }
 
-func NewService(chessresultsProvider *chessresults.ChessResultsProvider, repo *database.Repository) Service {
-	return Service{
-		chessresultsProvider: chessresultsProvider,
-		repository:           repo,
+func NewService(repository Repository) *Service {
+	return &Service{
+		repository: repository,
 	}
 }
 
-func (s *Service) Subscribe(tournamentUrl, userId string) (*string, error) {
-	// Get tournament if exists
-	tournament, exists := s.repository.GetTournamentByURL(tournamentUrl)
-
-	// If not, create a new one
-	if !exists {
-		var err error
-
-		tournament, err = s.chessresultsProvider.GetTournament(tournamentUrl)
-
-		if err != nil {
-			return nil, err
-		}
-
-		err = s.repository.CreateTournament(*tournament)
-
-		if err != nil {
-			return nil, err
-		}
+func (s *Service) CreateSubscription(ctx context.Context, input CreateSubscriptionInput) (*Subscription, error) {
+	subscription := Subscription{
+		ID: uuid.NewString(),
+		DeviceID: input.DeviceID,
+		TournamentID: input.TournamentID,
 	}
 
-	// Create subscription
-	id, err := s.repository.CreateSubscription(tournament.ID, userId)
+	err := s.repository.Create(ctx, &subscription)
 
-	return id, err
-}
-
-func (s *Service) Unsubscribe(tournamentId, userToken string) bool {
-
-	subscription, found := s.repository.GetSubscriptionByTournamentAndUser(tournamentId, userToken)
-	
-	if !found {
-		return false
-	}
-
-	err := s.repository.DeactivateSubscription(subscription.ID)
-	
 	if err != nil {
-		return false
+		return nil, err
 	}
 
-	return true
+	return &subscription, err
 }
