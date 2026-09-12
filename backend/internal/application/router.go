@@ -18,6 +18,7 @@ func (app *App) routes() http.Handler {
 		r.Use(app.AuthMiddleware)
 
 		r.Post("/v1/subscriptions", app.SubscriptionHandler.CreateSubscription)
+		r.Delete("/v1/subscriptions/{id}", app.SubscriptionHandler.RemoveSubscription)
 	})
 
 	return router

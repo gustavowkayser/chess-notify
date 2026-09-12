@@ -4,6 +4,8 @@ import (
 	"chess-notify/internal/middleware"
 	"chess-notify/internal/utils"
 	"net/http"
+
+	"github.com/go-chi/chi"
 )
 
 type Handler struct {
@@ -24,9 +26,9 @@ func (h *Handler) CreateSubscription(w http.ResponseWriter, r *http.Request) {
 
 	device := middleware.DeviceFromContext(r.Context())
 
-	subscription, err := h.service.CreateSubscription(r.Context(), CreateSubscriptionInput{
-		DeviceID: device.ID,
-		TournamentID: req.TournamentId,
+	subscription, err := h.service.Subscribe(r.Context(), CreateSubscriptionInput{
+		DeviceID:      device.ID,
+		TournamentURL: req.TournamentURL,
 	})
 
 	if err != nil {
@@ -39,7 +41,7 @@ func (h *Handler) CreateSubscription(w http.ResponseWriter, r *http.Request) {
 	}
 
 	response, err := wr.EncodeResponse(CreateSubscriptionResponse{
-		SubscriptionId: subscription.ID,
+		SubscriptionID: subscription.ID,
 	})
 
 	if err != nil {
@@ -52,8 +54,29 @@ func (h *Handler) CreateSubscription(w http.ResponseWriter, r *http.Request) {
 	}
 
 	wr.WriteResponse(
-		http.StatusOK, 
+		http.StatusOK,
 		"Subscribed to the tournament successfuly",
 		response,
 	)
+}
+
+func (h *Handler) RemoveSubscription(w http.ResponseWriter, r *http.Request) {
+	wr := utils.NewWriteReader[RemoveSubscriptionRequest, RemoveSubscriptionResponse](r, w)
+	id := chi.URLParam(r, "id")
+
+	device := middleware.DeviceFromContext(r.Context())
+
+	err := h.service.Unsubscribe(r.Context(), RemoveSubscriptionInput{
+		DeviceID:       device.ID,
+		SubscriptionID: id,
+	})
+
+	if err != nil {
+		wr.WriteError(
+			http.StatusBadRequest,
+			"Could not unsubscribe from tournament",
+			err.Error(),
+		)
+		return
+	}
 }

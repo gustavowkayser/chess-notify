@@ -7,6 +7,8 @@ import (
 
 type Repository interface {
 	Create(ctx context.Context, subscription *Subscription) error
+	GetByID(ctx context.Context, id string) (*Subscription, error)
+	Delete(ctx context.Context, id string) error
 }
 
 type repository struct {
@@ -28,6 +30,36 @@ func (r *repository) Create(ctx context.Context, subscription *Subscription) err
 	`
 
 	_, err := r.db.ExecContext(ctx, query, subscription.ID, subscription.DeviceID, subscription.TournamentID)
+
+	return err
+}
+
+func (r *repository) GetByID(ctx context.Context, id string) (*Subscription, error) {
+	query := `
+		SELECT id, device_id, tournament_id FROM subscriptions
+		WHERE id = $1;
+	`
+
+	var subscription Subscription
+	err := r.db.QueryRowContext(ctx, query, id).Scan(
+		&subscription.ID,
+		&subscription.DeviceID,
+		&subscription.TournamentID,
+	)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &subscription, nil
+}
+
+func (r *repository) Delete(ctx context.Context, id string) error {
+	query := `
+		DELETE FROM subscriptions WHERE id = $1;
+	`
+
+	_, err := r.db.ExecContext(ctx, query, id)
 
 	return err
 }

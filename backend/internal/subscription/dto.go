@@ -1,9 +1,17 @@
 package subscription
 
 type CreateSubscriptionRequest struct {
-	TournamentId string
+	TournamentURL string
 }
 
 type CreateSubscriptionResponse struct {
-	SubscriptionId string
+	SubscriptionID string `json:"subscription_id"`
+}
+
+type RemoveSubscriptionRequest struct {
+	SubscriptionID string
+}
+
+type RemoveSubscriptionResponse struct {
+	SubscriptionID string
 }
