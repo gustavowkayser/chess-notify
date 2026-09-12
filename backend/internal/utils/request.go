@@ -31,13 +31,13 @@ func (wr *WriteReader[T, U]) DecodeRequest(st T) *T {
 	return &st
 }
 
-func (wr *WriteReader[T, U]) EncodeResponse(data U) (map[string]any, error) {
+func (wr *WriteReader[T, U]) EncodeResponse(data U) (any, error) {
 	value, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
 	}
 
-	var out map[string]any
+	var out any
 	if err := json.Unmarshal(value, &out); err != nil {
 		return nil, err
 	}

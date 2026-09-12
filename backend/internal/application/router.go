@@ -19,6 +19,7 @@ func (app *App) routes() http.Handler {
 
 		r.Post("/v1/subscriptions", app.SubscriptionHandler.CreateSubscription)
 		r.Delete("/v1/subscriptions/{id}", app.SubscriptionHandler.RemoveSubscription)
+		r.Get("/v1/subscriptions", app.SubscriptionHandler.ListSubscriptions)
 	})
 
 	return router

@@ -15,3 +15,5 @@ type RemoveSubscriptionRequest struct {
 type RemoveSubscriptionResponse struct {
 	SubscriptionID string
 }
+
+type ListSubscriptionsResponse = ListSubscriptionsView

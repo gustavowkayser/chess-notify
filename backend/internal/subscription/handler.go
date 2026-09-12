@@ -80,3 +80,49 @@ func (h *Handler) RemoveSubscription(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 }
+
+func (h *Handler) ListSubscriptions(w http.ResponseWriter, r *http.Request) {
+
+	wr := utils.NewWriteReader[any, ListSubscriptionsResponse](r, w)
+	device := middleware.DeviceFromContext(r.Context())
+
+	subscriptions, err := h.service.ListSubscriptions(r.Context(), device.ID)
+
+	if err != nil {
+		wr.WriteError(
+			http.StatusBadRequest,
+			"Could not list subscriptions",
+			err.Error(),
+		)
+		return
+	}
+
+	response := make(ListSubscriptionsResponse, 0)
+
+	for _, sub := range *subscriptions {
+		response = append(response, SubscriptionView{
+			ID:                    sub.ID,
+			TournamentID:          sub.TournamentID,
+			TournamentName:        sub.TournamentName,
+			TournamentRound:       sub.TournamentRound,
+			TournamentTotalRounds: sub.TournamentTotalRounds,
+		})
+	}
+
+	encoded, err := wr.EncodeResponse(response)
+
+	if err != nil {
+		wr.WriteError(
+			http.StatusBadRequest,
+			"Could not list subscriptions",
+			err.Error(),
+		)
+		return
+	}
+
+	wr.WriteResponse(
+		http.StatusOK,
+		"Listed subscriptions successfuly",
+		encoded,
+	)
+}

@@ -1,6 +1,6 @@
 name: Health Check
 method: GET
-url: https://example.com
+url: $host/v1/health
 timeout: 30000
 followRedirects: true
 maxRedirects: 5

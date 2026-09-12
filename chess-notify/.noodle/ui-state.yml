@@ -8,3 +8,6 @@ add-device:
 remove-subscription:
   request: pathParams
   response: body
+list-subscriptions:
+  request: auth
+  response: body

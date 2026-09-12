@@ -102,3 +102,13 @@ func (s *Service) UpsertTournament(ctx context.Context, url string) (*tournament
 
 	return tournament, nil
 }
+
+func (s *Service) ListSubscriptions(ctx context.Context, deviceId string) (*ListSubscriptionsView, error) {
+	subscriptions, err := s.repository.ListWithTournament(ctx, deviceId)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return subscriptions, nil
+}

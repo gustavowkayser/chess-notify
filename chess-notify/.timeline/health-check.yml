@@ -1,3 +1,99 @@
+- id: aec019fa-2292-4aa7-be8d-e0e7a99cd283
+  timestamp: 1789245797126
+  envName: development
+  network:
+    - timeMs: 0.018654999999853317
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.36686399999962305
+      type: request
+      message: GET http://localhost:8080/v1/health
+    - timeMs: 4.8391649999975925
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 4.911486999997578
+      type: body
+      message: Body received - 50 bytes
+    - timeMs: 4.916557000000466
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: health-check
+    name: Health Check
+    method: GET
+    url: http://localhost:8080/v1/health
+    headers: {}
+    params: []
+    pathParams: []
+    auth:
+      type: none
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '50'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:43:17 GMT
+    body: |
+      {"data":null,"message":"All good","success":true}
+    timeMs: 4.9319350000005215
+    size: 50
+- id: 576da70b-e0ef-4e97-bcf5-4a7578b9060e
+  timestamp: 1789245776885
+  envName: development
+  network:
+    - timeMs: 0.06318599999940488
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 34.685552999999345
+      type: request
+      message: GET https://example.com/
+    - timeMs: 152.2415660000006
+      type: response
+      message: 200 OK - 11 headers
+    - timeMs: 152.50075199999992
+      type: body
+      message: Body received - 559 bytes
+    - timeMs: 152.51222299999972
+      type: complete
+      message: Completed in 153ms
+  request:
+    id: health-check
+    name: Health Check
+    method: GET
+    url: https://example.com
+    headers: {}
+    params: []
+    pathParams: []
+    auth:
+      type: none
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      age: '11862'
+      allow: GET, HEAD
+      cf-cache-status: HIT
+      cf-ray: a3a1bdd99a59af50-GRU
+      connection: keep-alive
+      content-encoding: br
+      content-type: text/html
+      date: Sat, 12 Sep 2026 20:42:56 GMT
+      last-modified: Fri, 11 Sep 2026 17:42:00 GMT
+      server: cloudflare
+      transfer-encoding: chunked
+    body: >
+      <!doctype html><html lang="en"><head><title>Example Domain</title><link
+      rel="icon" href="data:,"><meta name="viewport"
+      content="width=device-width,
+      initial-scale=1"><style>body{background:#eee;width:60vw;margin:15vh
+      auto;font-family:system-ui,sans-serif}h1{font-size:1.5em}div{opacity:0.8}a:link,a:visited{color:#348}</style></head><body><div><h1>Example
+      Domain</h1><p>This domain is for use in documentation examples without
+      needing permission. Avoid use in operations.</p><p><a
+      href="https://iana.org/domains/example">Learn
+      more</a></p></div></body></html>
+    timeMs: 152.5699390000009
+    size: 559
 - id: 540a9e33-c062-468c-bcc7-fc8e35d19b1f
   timestamp: 1789178807731
   envName: development

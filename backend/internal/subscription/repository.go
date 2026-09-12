@@ -9,6 +9,7 @@ type Repository interface {
 	Create(ctx context.Context, subscription *Subscription) error
 	GetByID(ctx context.Context, id string) (*Subscription, error)
 	Delete(ctx context.Context, id string) error
+	ListWithTournament(ctx context.Context, deviceId string) (*ListSubscriptionsView, error)
 }
 
 type repository struct {
@@ -62,4 +63,47 @@ func (r *repository) Delete(ctx context.Context, id string) error {
 	_, err := r.db.ExecContext(ctx, query, id)
 
 	return err
+}
+
+func (r *repository) ListWithTournament(ctx context.Context, deviceId string) (*ListSubscriptionsView, error) {
+	query := `
+		SELECT
+		subscriptions.id,
+		tournaments.id,
+		tournaments.name,
+		tournaments.current_round,
+		tournaments.total_rounds
+		FROM subscriptions
+		INNER JOIN tournaments ON subscriptions.tournament_id = tournaments.id
+		WHERE device_id = $1;
+	`
+
+	var subscriptions ListSubscriptionsView
+	rows, err := r.db.QueryContext(ctx, query, deviceId)
+
+	if err != nil {
+		return nil, err
+	}
+
+	for rows.Next() {
+		var subscription SubscriptionView
+
+		rows.Scan(
+			&subscription.ID,
+			&subscription.TournamentID,
+			&subscription.TournamentName,
+			&subscription.TournamentRound,
+			&subscription.TournamentTotalRounds,
+		)
+
+		if rows.Err() != nil {
+			continue
+		}
+
+		subscriptions = append(subscriptions, subscription)
+	}
+
+	rows.Close()
+
+	return &subscriptions, nil
 }
