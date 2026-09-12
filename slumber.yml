@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/LucasPickering/slumber/refs/tags/v5.3.0/schemas/collection.json
+# ^ This enables schema validation and autocomplete in your editor
+# https://github.com/redhat-developer/yaml-language-server
+
+# For basic usage info, see:
+# https://slumber.lucaspickering.me/getting_started.html
+# For all collection options, see:
+# https://slumber.lucaspickering.me/api/request_collection/index.html
+
+name: Chess Notify
+
+# Profiles are groups of data you can easily switch between. A common usage is
+# to define profiles for various environments of a REST service
+profiles:
+  example:
+    name: Default
+    data:
+      host: http://localhost:8080
+
+requests:
+  example_get:
+    name: Example GET
+    method: GET
+    url: "{{ host }}/get"
+
+  example_folder:
+    name: Example Folder
+    requests:
+      example_post:
+        name: Example POST
+        method: POST
+        url: "{{ host }}/post"
+        body:
+          type: json
+          data: { "data": "{{ response('example_get') | jsonpath('$.data') }}" }

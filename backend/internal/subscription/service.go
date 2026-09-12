@@ -1,7 +1,6 @@
 package subscription
 
 import (
-	"chess-notify/internal/chess"
 	"chess-notify/internal/tournament"
 	"context"
 	"database/sql"
@@ -23,13 +22,13 @@ type RemoveSubscriptionInput struct {
 type Service struct {
 	repository           Repository
 	tournamentRepository tournament.Repository
-	chessProvider        chess.Provider
+	chessProvider        tournament.Provider
 }
 
 func NewService(
 	repository Repository,
 	tournamentRepository tournament.Repository,
-	chessProvider chess.Provider,
+	chessProvider tournament.Provider,
 ) *Service {
 	return &Service{
 		repository:           repository,

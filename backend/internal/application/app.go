@@ -1,7 +1,6 @@
 package application
 
 import (
-	"chess-notify/internal/chess"
 	"chess-notify/internal/database"
 	"chess-notify/internal/device"
 	"chess-notify/internal/middleware"
@@ -22,6 +21,7 @@ type App struct {
 	// TournamentHandler *tournament.Handler
 	AuthMiddleware func(http.Handler) http.Handler
 	LogMiddleware  func(http.Handler) http.Handler
+	TournamentJob  *tournament.Job
 }
 
 func New() (*App, error) {
@@ -39,7 +39,7 @@ func New() (*App, error) {
 		return nil, err
 	}
 
-	chessProvider := chess.NewProvider()
+	chessProvider := tournament.NewProvider()
 
 	deviceRepository := device.NewRepository(db)
 	deviceService := device.NewService(deviceRepository)
@@ -54,7 +54,8 @@ func New() (*App, error) {
 	authMiddleware := middleware.DeviceAuth(deviceService)
 	logMiddleware := middleware.LogMiddleware()
 
-	// tournamentService := tournament.NewService(tournamentRepository)
+	tournamentService := tournament.NewService(chessProvider, tournamentRepository)
+	tournamentJob := tournament.NewJob(tournamentService)
 	// tournamentHandler := tournament.NewHandler(tournamentService)
 
 	return &App{
@@ -64,6 +65,7 @@ func New() (*App, error) {
 		SubscriptionHandler: subscriptionHandler,
 		AuthMiddleware:      authMiddleware,
 		LogMiddleware:       logMiddleware,
+		TournamentJob:       tournamentJob,
 		// TournamentHandler: tournamentHandler,
 	}, nil
 }
@@ -71,6 +73,8 @@ func New() (*App, error) {
 func (app *App) Run() error {
 	handler := app.routes()
 
+	app.TournamentJob.InitRefresh()
+	
 	log.Printf("Running server on port: %s\n", app.Config.Port)
 	return http.ListenAndServe(":"+app.Config.Port, handler)
 }

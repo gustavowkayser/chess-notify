@@ -1,7 +1,6 @@
-package chess
+package tournament
 
 import (
-	"chess-notify/internal/tournament"
 	"errors"
 	"net/http"
 	"regexp"
@@ -22,7 +21,7 @@ var (
 )
 
 type Provider interface {
-	GetTournament(url string) (*tournament.Tournament, error)
+	GetTournament(url string) (*Tournament, error)
 }
 
 type provider struct {
@@ -42,7 +41,7 @@ type roundLink struct {
 	Label string
 }
 
-func (p *provider) GetTournament(url string) (*tournament.Tournament, error) {
+func (p *provider) GetTournament(url string) (*Tournament, error) {
 
 	response, err := p.httpClient.Get(url)
 
@@ -82,7 +81,7 @@ func (p *provider) GetTournament(url string) (*tournament.Tournament, error) {
 	
 	_ = doc
 
-	return &tournament.Tournament{
+	return &Tournament{
 		ID: uuid.NewString(),
 		URL: url,
 		Name: name,

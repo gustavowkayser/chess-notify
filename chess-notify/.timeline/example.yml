@@ -1,0 +1,120 @@
+- id: 231dae7a-8365-45b7-a2e2-f02fa87bdb8c
+  timestamp: 1789178356031
+  envName: development
+  network:
+    - timeMs: 0.052727999980561435
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.5672199999680743
+      type: request
+      message: GET http://localhost:8080/v1/health
+    - timeMs: 6.998337999975774
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 7.15614999999525
+      type: body
+      message: Body received - 50 bytes
+    - timeMs: 7.168242999992799
+      type: complete
+      message: Completed in 7ms
+  request:
+    id: example
+    name: Example
+    method: GET
+    url: http://localhost:8080/v1/health
+    headers: {}
+    params: []
+    pathParams: []
+    auth:
+      type: none
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '50'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 01:59:16 GMT
+    body: |
+      {"data":null,"message":"All good","success":true}
+    timeMs: 7.203487999970093
+    size: 50
+- id: 92fc412f-92a8-4932-b307-bcd0e5eed7e3
+  timestamp: 1789178309440
+  envName: development
+  request:
+    id: example
+    name: Example
+    method: GET
+    url: $host/v1/health
+    headers: {}
+    params: []
+    pathParams: []
+    auth:
+      type: none
+  error:
+    message: 'requests.substitute: unresolved variable "host" in url'
+- id: c3288fee-31bb-411b-a9d2-fbf7d8e0a386
+  timestamp: 1789178182673
+  envName: development
+  network:
+    - timeMs: 0.035325000004377216
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.8913790000078734
+      type: request
+      message: GET https://{{host}}/v1/health
+    - timeMs: 4.022551999994903
+      type: error
+      message: 'requests.send: fetch failed'
+  request:
+    id: example
+    name: Example
+    method: GET
+    url: '{{host}}/v1/health'
+    headers: {}
+    params: []
+    pathParams: []
+    auth:
+      type: none
+  error:
+    message: 'requests.send: fetch failed'
+- id: 76b586be-be2f-4a42-89dc-925e7c108bed
+  timestamp: 1789178136985
+  envName: development
+  network:
+    - timeMs: 0.04546399999526329
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 1.735490999999456
+      type: request
+      message: GET http://localhost:8080/v1/health
+    - timeMs: 5.902430000001914
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 6.14408800000092
+      type: body
+      message: Body received - 50 bytes
+    - timeMs: 6.157663000005414
+      type: complete
+      message: Completed in 6ms
+  request:
+    id: example
+    name: Example
+    method: GET
+    url: http://localhost:8080/v1/health
+    headers: {}
+    params: []
+    pathParams: []
+    auth:
+      type: none
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '50'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 01:55:36 GMT
+    body: |
+      {"data":null,"message":"All good","success":true}
+    timeMs: 6.21484899999632
+    size: 50

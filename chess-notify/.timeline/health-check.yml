@@ -1,0 +1,80 @@
+- id: 540a9e33-c062-468c-bcc7-fc8e35d19b1f
+  timestamp: 1789178807731
+  envName: development
+  network:
+    - timeMs: 0.040705000050365925
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.424966000020504
+      type: request
+      message: GET http://localhost:8080/v1/health
+    - timeMs: 3.973552000010386
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 4.042970000067726
+      type: body
+      message: Body received - 50 bytes
+    - timeMs: 4.047128000063822
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: health-check
+    name: Health Check
+    method: GET
+    url: http://localhost:8080/v1/health
+    headers: {}
+    params: []
+    pathParams: []
+    auth:
+      type: none
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '50'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:06:47 GMT
+    body: |
+      {"data":null,"message":"All good","success":true}
+    timeMs: 4.064190000062808
+    size: 50
+- id: cf3994b2-a474-43c8-814e-dba2cd411fcb
+  timestamp: 1789178742139
+  envName: development
+  network:
+    - timeMs: 0.02772100002039224
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.2649299999466166
+      type: request
+      message: GET http://localhost:8080/v1/health
+    - timeMs: 3.7718779999995604
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 3.836829000036232
+      type: body
+      message: Body received - 50 bytes
+    - timeMs: 3.841247000033036
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: health-check
+    name: Health Check
+    method: GET
+    url: http://localhost:8080/v1/health
+    headers: {}
+    params: []
+    pathParams: []
+    auth:
+      type: none
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '50'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:05:42 GMT
+    body: |
+      {"data":null,"message":"All good","success":true}
+    timeMs: 3.859199999948032
+    size: 50

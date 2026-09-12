@@ -1,0 +1,14 @@
+name: Remove Subscription
+method: DELETE
+url: $host/v1/subscriptions/:id
+timeout: 0
+followRedirects: true
+maxRedirects: 5
+path_params:
+  - name: id
+    value: da333e37-df29-429c-b3a1-59ba704e3f9b
+body: ''
+body_type: none
+auth:
+  type: bearer
+  token: $device_token

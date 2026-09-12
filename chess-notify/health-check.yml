@@ -1,0 +1,6 @@
+name: Health Check
+method: GET
+url: https://example.com
+timeout: 30000
+followRedirects: true
+maxRedirects: 5

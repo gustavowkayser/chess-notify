@@ -1,0 +1,339 @@
+- id: 56f002cc-3fcc-4323-beea-ac748320ad71
+  timestamp: 1789236067302
+  envName: development
+  network:
+    - timeMs: 0.0455530000035651
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.418589000008069
+      type: request
+      message: >-
+        DELETE
+        http://localhost:8080/v1/subscriptions/da333e37-df29-429c-b3a1-59ba704e3f9b
+    - timeMs: 16.80981000000611
+      type: response
+      message: 200 OK - 2 headers
+    - timeMs: 16.905262999993283
+      type: body
+      message: Body received - 0 bytes
+    - timeMs: 16.91427899998962
+      type: complete
+      message: Completed in 17ms
+  request:
+    id: remove-subscription
+    name: Remove Subscription
+    method: DELETE
+    url: http://localhost:8080/v1/subscriptions/da333e37-df29-429c-b3a1-59ba704e3f9b
+    headers: {}
+    params: []
+    pathParams:
+      - name: id
+        value: da333e37-df29-429c-b3a1-59ba704e3f9b
+        enabled: true
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '0'
+      date: Sat, 12 Sep 2026 18:01:07 GMT
+    body: ''
+    timeMs: 16.93047900000238
+    size: 0
+- id: 02a02e4e-73e2-4a70-a6e1-8c5f69d5614b
+  timestamp: 1789236033390
+  envName: development
+  network:
+    - timeMs: 0.02004599999054335
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.15939899999648333
+      type: request
+      message: >-
+        DELETE
+        http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    - timeMs: 4.752868999989005
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 4.884056999988388
+      type: body
+      message: Body received - 105 bytes
+    - timeMs: 4.889185999985784
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: remove-subscription
+    name: Remove Subscription
+    method: DELETE
+    url: http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    headers: {}
+    params: []
+    pathParams:
+      - name: id
+        value: f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+        enabled: true
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '105'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 18:00:33 GMT
+    body: >
+      {"error":"sql: no rows in result set","message":"Could not unsubscribe
+      from tournament","success":false}
+    timeMs: 4.907368999993196
+    size: 105
+- id: 05e1bc43-2fcb-4dc3-a632-6d9853b25d4a
+  timestamp: 1789235986687
+  envName: development
+  network:
+    - timeMs: 0.01418500000727363
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.11805399999138899
+      type: request
+      message: >-
+        DELETE
+        http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    - timeMs: 4.774378000001889
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 4.848171999998158
+      type: body
+      message: Body received - 105 bytes
+    - timeMs: 4.855435000004945
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: remove-subscription
+    name: Remove Subscription
+    method: DELETE
+    url: http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    headers: {}
+    params: []
+    pathParams:
+      - name: id
+        value: f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+        enabled: true
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '105'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 17:59:46 GMT
+    body: >
+      {"error":"sql: no rows in result set","message":"Could not unsubscribe
+      from tournament","success":false}
+    timeMs: 4.868679000006523
+    size: 105
+- id: 2b6a6b0b-9515-4c07-8dc6-f08f4076d5ec
+  timestamp: 1789235952037
+  envName: development
+  network:
+    - timeMs: 0.024604000005638227
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.2243060000037076
+      type: request
+      message: >-
+        DELETE
+        http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    - timeMs: 7.436149999994086
+      type: response
+      message: 200 OK - 2 headers
+    - timeMs: 7.541249999994761
+      type: body
+      message: Body received - 0 bytes
+    - timeMs: 7.549415000001318
+      type: complete
+      message: Completed in 8ms
+  request:
+    id: remove-subscription
+    name: Remove Subscription
+    method: DELETE
+    url: http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    headers: {}
+    params: []
+    pathParams:
+      - name: id
+        value: f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+        enabled: true
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '0'
+      date: Sat, 12 Sep 2026 17:59:12 GMT
+    body: ''
+    timeMs: 7.567437000005157
+    size: 0
+- id: 1dfc132f-d088-4dab-bca8-fab4fb6dea90
+  timestamp: 1789235840658
+  envName: development
+  network:
+    - timeMs: 0.06402600000001257
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 2.2756719999997586
+      type: request
+      message: >-
+        DELETE
+        http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    - timeMs: 8.53145399999994
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 8.761350000000675
+      type: body
+      message: Body received - 131 bytes
+    - timeMs: 8.778119999999035
+      type: complete
+      message: Completed in 9ms
+  request:
+    id: remove-subscription
+    name: Remove Subscription
+    method: DELETE
+    url: http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    headers: {}
+    params: []
+    pathParams:
+      - name: id
+        value: f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+        enabled: true
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '131'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 17:57:20 GMT
+    body: >
+      {"error":"pq: invalid input syntax for type uuid: \"\"
+      (22P02)","message":"Could not unsubscribe from
+      tournament","success":false}
+    timeMs: 8.800119999999879
+    size: 131
+- id: 98e6032e-ec09-4653-a9d8-e0fec3afb83f
+  timestamp: 1789235780944
+  envName: development
+  network:
+    - timeMs: 0.032447999343276024
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.26918699964880943
+      type: request
+      message: >-
+        DELETE
+        http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    - timeMs: 5.337457999587059
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 5.440364999696612
+      type: body
+      message: Body received - 131 bytes
+    - timeMs: 5.448659999296069
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: remove-subscription
+    name: Remove Subscription
+    method: DELETE
+    url: http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    headers: {}
+    params: []
+    pathParams:
+      - name: id
+        value: f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+        enabled: true
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '131'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 17:56:20 GMT
+    body: >
+      {"error":"pq: invalid input syntax for type uuid: \"\"
+      (22P02)","message":"Could not unsubscribe from
+      tournament","success":false}
+    timeMs: 5.4717609994113445
+    size: 131
+- id: 115ed384-2052-4e73-9f71-4508c1d8dc16
+  timestamp: 1789235718989
+  envName: development
+  network:
+    - timeMs: 0.02979400008916855
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.2883219998329878
+      type: request
+      message: >-
+        DELETE
+        http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    - timeMs: 4.208653999492526
+      type: response
+      message: 404 Not Found - 4 headers
+    - timeMs: 4.2767069991678
+      type: body
+      message: Body received - 19 bytes
+    - timeMs: 4.280584000051022
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: remove-subscription
+    name: Remove Subscription
+    method: DELETE
+    url: http://localhost:8080/v1/subscriptions/f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+    headers: {}
+    params: []
+    pathParams:
+      - name: id
+        value: f04c5fd6-2fdc-480e-a86c-8ce2936354c0
+        enabled: true
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 404
+    statusText: Not Found
+    headers:
+      content-length: '19'
+      content-type: text/plain; charset=utf-8
+      date: Sat, 12 Sep 2026 17:55:18 GMT
+      x-content-type-options: nosniff
+    body: |
+      404 page not found
+    timeMs: 4.297334000468254
+    size: 19
