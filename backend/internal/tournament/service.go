@@ -1,6 +1,7 @@
 package tournament
 
 import (
+	"chess-notify/internal/notification"
 	"context"
 	"log"
 	"sync"
@@ -18,7 +19,10 @@ func NewService(provider Provider, repository Repository) *Service {
 	}
 }
 
-func (s *Service) Refresh(ctx context.Context) {
+func (s *Service) Refresh(
+	ctx context.Context,
+	notificationCh chan *notification.Notification,
+) {
 	// Runs every minute
 	log.Println("Refresh tournaments...")
 
@@ -26,13 +30,13 @@ func (s *Service) Refresh(ctx context.Context) {
 
 	var wg sync.WaitGroup
 
-	for i := 0; i < 10; i++ {
+	for _ = range 10 {
 		wg.Add(1)
 
-		go func() {
+		wg.Go(func() {
 			defer wg.Done()
-			s.Worker(ctx, jobs)
-		}()
+			s.Worker(ctx, jobs, notificationCh)
+		})
 	}
 
 	tournaments, err := s.repository.GetAllActive(ctx)
@@ -57,7 +61,11 @@ func (s *Service) Refresh(ctx context.Context) {
 	wg.Wait()
 }
 
-func (s *Service) Worker(ctx context.Context, jobs chan *Tournament) {
+func (s *Service) Worker(
+	ctx context.Context,
+	jobs chan *Tournament,
+	notificationCh chan *notification.Notification,
+) {
 	for {
 		select {
 		case tournament, ok := <-jobs:
@@ -78,6 +86,10 @@ func (s *Service) Worker(ctx context.Context, jobs chan *Tournament) {
 			}
 
 			err = s.repository.Update(ctx, tournament.ID, updated)
+
+			notificationCh <- &notification.Notification{
+				TournamentID: tournament.ID,
+			}
 
 			if err != nil {
 				log.Printf("Error occured when updating tournament: %s\n", err.Error())

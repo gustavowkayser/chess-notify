@@ -1,6 +1,7 @@
 package tournament
 
 import (
+	"chess-notify/internal/notification"
 	"context"
 
 	"github.com/robfig/cron/v3"
@@ -8,10 +9,11 @@ import (
 
 type Job struct {
 	service *Service
+	notificationCh chan *notification.Notification
 }
 
-func NewJob(service *Service) *Job {
-	return &Job{ service: service }
+func NewJob(service *Service, notificationCh chan *notification.Notification) *Job {
+	return &Job{ service: service, notificationCh: notificationCh, }
 }
 
 func (j *Job) InitRefresh() {
@@ -24,5 +26,5 @@ func (j *Job) InitRefresh() {
 func (j *Job) Refresh() {
 	// Runs every minute
 	ctx := context.Background()
-	j.service.Refresh(ctx)
+	j.service.Refresh(ctx, j.notificationCh)
 }
