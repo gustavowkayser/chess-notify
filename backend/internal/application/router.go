@@ -12,9 +12,8 @@ func (app *App) routes() http.Handler {
 	router.Use(app.LogMiddleware)
 	
 	router.Get("/v1/health", HealthHandler)
-	router.Post("/v1/devices", app.DeviceHandler.Register)
-	router.Put("/v1/devices", app.DeviceHandler.Update)
-
+	router.Put("/v1/devices", app.DeviceHandler.Upsert)
+	
 	router.Group(func(r chi.Router) {
 		r.Use(app.AuthMiddleware)
 

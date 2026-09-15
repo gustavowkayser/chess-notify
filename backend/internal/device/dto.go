@@ -19,3 +19,14 @@ type UpdateDeviceRequest struct {
 type UpdateDeviceResponse struct {
 	DeviceID string `json:"deviceId"`
 }
+
+type UpsertDeviceRequest struct {
+	PushToken string `json:"pushToken"`
+	Platform string `json:"platform"`
+	AppVersion string `json:"appVersion"`
+}
+
+type UpsertDeviceResponse struct {
+	DeviceID string `json:"deviceId"`
+	DeviceToken string `json:"deviceToken"`
+}

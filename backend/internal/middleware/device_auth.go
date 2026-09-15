@@ -1,15 +1,27 @@
 package middleware
 
 import (
-	"chess-notify/internal/device"
 	"chess-notify/internal/utils"
 	"context"
 	"net/http"
 	"strings"
 )
 
-func DeviceFromContext(ctx context.Context) *device.Device {
-	device, ok := ctx.Value("device").(*device.Device)
+type Device struct {
+	ID string
+	CredentialHash string
+	PushToken string
+	Platform string
+	AppVersion string
+	Active bool
+}
+
+type Service interface {
+	Authenticate(context.Context, string) (*Device, error)
+}
+
+func DeviceFromContext(ctx context.Context) *Device {
+	device, ok := ctx.Value("device").(*Device)
 
 	if !ok {
 		return nil
@@ -18,7 +30,7 @@ func DeviceFromContext(ctx context.Context) *device.Device {
 	return device
 }
 
-func DeviceAuth(authService *device.Service) func(http.Handler) http.Handler {
+func DeviceAuth(authService Service) func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 

@@ -3,6 +3,7 @@ package device
 import (
 	"context"
 	"database/sql"
+	"errors"
 )
 
 type Repository interface {
@@ -46,11 +47,29 @@ func (r *repository) Create(ctx context.Context, device *Device) error {
 
 func (r *repository) FindByID(ctx context.Context, id string) (*Device, error) {
 	query := `
-		SELECT * FROM devices WHERE id = $1;
+		SELECT
+		id,
+		credentials_hash,
+		push_token,
+		app_version,
+		platform,
+		active
+		FROM devices WHERE id = $1;
 	`
 
 	var device Device
-	err := r.db.QueryRowContext(ctx, query, id).Scan(&device)
+	err := r.db.QueryRowContext(ctx, query, id).Scan(
+		&device.ID,
+		&device.CredentialHash,
+		&device.PushToken,
+		&device.AppVersion,
+		&device.Platform,
+		&device.Active,
+	)
+
+	if errors.Is(err, sql.ErrNoRows) {
+		return nil, nil
+	}
 
 	if err != nil {
 		return nil, err
@@ -86,6 +105,10 @@ func (r *repository) FindByCredentialsHash(ctx context.Context, hash string) (*D
 		&device.Active,
 	)
 
+	if errors.Is(err, sql.ErrNoRows) {
+		return nil, nil
+	}
+	
 	if err != nil {
 		return nil, err
 	}

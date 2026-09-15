@@ -3,6 +3,7 @@ package device
 import (
 	"chess-notify/internal/utils"
 	"net/http"
+	"strings"
 )
 
 type Handler struct {
@@ -72,6 +73,45 @@ func (h *Handler) Update(w http.ResponseWriter, r *http.Request) {
 
 	response, err := wr.EncodeResponse(UpdateDeviceResponse{
 		DeviceID: device.ID,
+	})
+
+	if err != nil {
+		wr.WriteError(
+			http.StatusBadRequest,
+			"Error trying to update device",
+			err.Error(),
+		)
+		return
+	}
+
+	wr.WriteResponse(
+		http.StatusOK,
+		"Device updated successfuly",
+		response,
+	)
+}
+
+func (h *Handler) Upsert(w http.ResponseWriter, r *http.Request) {
+	var req UpsertDeviceRequest
+
+	wr := utils.NewWriteReader[UpsertDeviceRequest, UpsertDeviceResponse](r, w)
+	req = *wr.DecodeRequest(req)
+
+	credentials := strings.TrimPrefix(r.Header.Get("Authorization"), "Bearer ")
+	newDevice, err := h.service.UpsertDevice(r.Context(), req, &credentials)
+
+	if err != nil {
+		wr.WriteError(
+			http.StatusBadRequest,
+			"Error trying to register device",
+			err.Error(),
+		)
+		return
+	}
+
+	response, err := wr.EncodeResponse(UpsertDeviceResponse{
+		DeviceID:    newDevice.ID,
+		DeviceToken: newDevice.Credentials,
 	})
 
 	if err != nil {

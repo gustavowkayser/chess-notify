@@ -39,6 +39,14 @@ func New() (*App, error) {
 		return nil, err
 	}
 
+	argon2config := device.ArgonConfig {
+		Salt: []byte(config.Secret),
+		TimeCost: 2,
+		MemoryCost: 64 * 1024,
+		Threads: 4,
+		KeyLength: 32,
+	}
+
 	chessProvider := tournament.NewProvider()
 	notificationProvider := notification.NewExponent()
 
@@ -46,7 +54,7 @@ func New() (*App, error) {
 	notificationService := notification.NewService(notificationRepository, notificationProvider)
 
 	deviceRepository := device.NewRepository(db)
-	deviceService := device.NewService(deviceRepository)
+	deviceService := device.NewService(deviceRepository, argon2config)
 	deviceHandler := device.NewHandler(deviceService)
 
 	tournamentRepository := tournament.NewRepository(db)
