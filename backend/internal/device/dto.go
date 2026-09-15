@@ -10,3 +10,12 @@ type RegisterDeviceResponse struct {
 	DeviceID string `json:"deviceId"`
 	DeviceToken string `json:"deviceToken"`
 }
+
+type UpdateDeviceRequest struct {
+	PushToken string `json:"pushToken"`
+	DeviceToken string `json:"deviceToken"`
+}
+
+type UpdateDeviceResponse struct {
+	DeviceID string `json:"deviceId"`
+}

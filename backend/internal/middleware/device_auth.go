@@ -24,7 +24,7 @@ func DeviceAuth(authService *device.Service) func(http.Handler) http.Handler {
 
 			wr := utils.NewWriteReader[any, any](r, w)
 			token := strings.TrimPrefix(r.Header.Get("Authorization"), "Bearer ")
-			
+
 			if token == "" {
 				wr.WriteError(
 					http.StatusUnauthorized,

@@ -52,3 +52,21 @@ func (s *Service) Authenticate(ctx context.Context, token string) (*Device, erro
 
 	return device, nil
 }
+
+func (s *Service) UpdateDevice(ctx context.Context, req UpdateDeviceRequest) (*Device, error) {
+	device, err := s.repository.FindByCredentialsHash(ctx, req.DeviceToken)
+
+	if err != nil {
+		return nil, err
+	}
+
+	device.PushToken = req.PushToken
+
+	err = s.repository.Update(ctx, device.ID, device)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return device, nil
+}

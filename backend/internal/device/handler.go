@@ -31,9 +31,9 @@ func (h *Handler) Register(w http.ResponseWriter, r *http.Request) {
 		)
 		return
 	}
-	
+
 	response, err := wr.EncodeResponse(RegisterDeviceResponse{
-		DeviceID: device.ID,
+		DeviceID:    device.ID,
 		DeviceToken: device.CredentialHash,
 	})
 
@@ -47,8 +47,45 @@ func (h *Handler) Register(w http.ResponseWriter, r *http.Request) {
 	}
 
 	wr.WriteResponse(
-		http.StatusOK, 
+		http.StatusOK,
 		"Device registered successfuly",
+		response,
+	)
+}
+
+func (h *Handler) Update(w http.ResponseWriter, r *http.Request) {
+	var req UpdateDeviceRequest
+
+	wr := utils.NewWriteReader[UpdateDeviceRequest, UpdateDeviceResponse](r, w)
+	req = *wr.DecodeRequest(req)
+
+	device, err := h.service.UpdateDevice(r.Context(), req)
+
+	if err != nil {
+		wr.WriteError(
+			http.StatusBadRequest,
+			"Error trying to register device",
+			err.Error(),
+		)
+		return
+	}
+
+	response, err := wr.EncodeResponse(UpdateDeviceResponse{
+		DeviceID: device.ID,
+	})
+
+	if err != nil {
+		wr.WriteError(
+			http.StatusBadRequest,
+			"Error trying to update device",
+			err.Error(),
+		)
+		return
+	}
+
+	wr.WriteResponse(
+		http.StatusOK,
+		"Device updated successfuly",
 		response,
 	)
 }

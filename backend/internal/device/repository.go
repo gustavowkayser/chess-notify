@@ -9,6 +9,7 @@ type Repository interface {
 	Create(ctx context.Context, device *Device) error
 	FindByID(ctx context.Context, id string) (*Device, error)
 	FindByCredentialsHash(ctx context.Context, hash string) (*Device, error)
+	Update(ctx context.Context, id string, device *Device) error
 }
 
 type repository struct {
@@ -90,4 +91,16 @@ func (r *repository) FindByCredentialsHash(ctx context.Context, hash string) (*D
 	}
 
 	return &device, nil
+}
+
+func (r *repository) Update(ctx context.Context, id string, device *Device) error {
+	query := `
+		UPDATE devices SET
+		push_token = $1
+		WHERE id = $2
+	`
+
+	_, err := r.db.ExecContext(ctx, query, device.PushToken, id)
+
+	return err
 }
