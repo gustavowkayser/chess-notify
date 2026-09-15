@@ -6,39 +6,23 @@ interface Response<T> {
     data: T;
 }
 
-interface CreateDeviceRequest {
+interface UpsertDeviceRequest {
     pushToken: string;
     appVersion: string;
     platform: string;
 }
 
-interface CreateDeviceResponse {
+interface UpsertDeviceResponse {
     deviceId: string;
     deviceToken: string;
-}
-
-interface UpdateDeviceRequest {
-    pushToken: string;
-    deviceToken: string;
-}
-
-interface UpdateDeviceResponse {
-    deviceId: string;
 }
 
 export default class DeviceService {
     constructor(readonly apiClient: AxiosInstance) {}
 
-    public async createDevice(
-        request: CreateDeviceRequest,
-    ): Promise<Response<CreateDeviceResponse>> {
-        const response = await this.apiClient.post("/v1/devices", request);
-        return response.data;
-    }
-
-    public async updateDevice(
-        request: UpdateDeviceRequest,
-    ): Promise<Response<UpdateDeviceResponse>> {
+    public async upsertDevice(
+        request: UpsertDeviceRequest,
+    ): Promise<Response<UpsertDeviceResponse>> {
         const response = await this.apiClient.put("/v1/devices", request);
         return response.data;
     }

@@ -1,4 +1,4 @@
-import { getItemAsync, setItemAsync } from "expo-secure-store";
+import { setItemAsync } from "expo-secure-store";
 import type DeviceService from "@/infrastructure/services/deviceService";
 
 export interface CreateDeviceInput {
@@ -11,23 +11,14 @@ export default class CreateDeviceUseCase {
     constructor(readonly deviceService: DeviceService) {}
 
     async execute(input: CreateDeviceInput) {
-        const credentialsToken = await getItemAsync("credentialsToken");
-
-        if (!credentialsToken) {
-            const device = await this.deviceService.createDevice({
-                pushToken: input.pushToken,
-                appVersion: input.appVersion,
-                platform: input.platform,
-            });
-
-            await setItemAsync("credentialsToken", device.data.deviceToken);
-
-            return;
-        }
-
-        await this.deviceService.updateDevice({
+        const device = await this.deviceService.upsertDevice({
             pushToken: input.pushToken,
-            deviceToken: credentialsToken,
+            appVersion: input.appVersion,
+            platform: input.platform,
         });
+
+        await setItemAsync("credentialsToken", device.data.deviceToken);
+
+        return;
     }
 }

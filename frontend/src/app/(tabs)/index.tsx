@@ -6,8 +6,8 @@ import { useNotification } from "@/presentation/context/NotificationContext";
 import { useDevice } from "@/presentation/hooks/useDevice";
 
 export default function HomeScreen() {
-    const { expoPushToken, error: _notificationError, notification: _notification } = useNotification();
-    const { createDevice, isLoading: _isLoading, error: _deviceError } = useDevice();
+    const { expoPushToken } = useNotification();
+    const { createDevice } = useDevice();
 
     useEffect(() => {
         if (expoPushToken) {

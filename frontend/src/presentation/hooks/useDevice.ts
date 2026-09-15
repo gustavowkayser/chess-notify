@@ -1,4 +1,6 @@
+import Constants from "expo-constants";
 import { useState } from "react";
+import { Platform } from "react-native";
 import CreateDeviceUseCase from "@/application/useCases/CreateDeviceUseCase";
 import { api } from "@/infrastructure/services/api";
 import DeviceService from "@/infrastructure/services/deviceService";
@@ -17,8 +19,8 @@ export function useDevice() {
 
             await useCase.execute({
                 pushToken: pushToken,
-                appVersion: process.env.EXPO_PUBLIC_APP_VERSION ?? "Unknown",
-                platform: process.env.EXPO_OS?.toLowerCase() ?? "Unknown",
+                appVersion: Constants.manifest2?.runtimeVersion ?? "0.0.0",
+                platform: Platform.OS,
             });
         } catch (error: any) {
             console.log("Error: ", JSON.stringify(error, null, 2));

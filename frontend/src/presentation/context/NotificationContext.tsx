@@ -44,6 +44,7 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({
 
     const notificationListener = useRef<Notifications.EventSubscription>(null);
     const responseListener = useRef<Notifications.EventSubscription>(null);
+    const pushTokenListener = useRef<Notifications.EventSubscription>(null);
 
     useEffect(() => {
         registerPushNotifications().then(
@@ -59,6 +60,10 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({
                 );
                 setNotification(notification);
             });
+
+        pushTokenListener.current = Notifications.addPushTokenListener((pushToken) => {
+            setExpoPushToken(pushToken.data);
+        });
 
         responseListener.current =
             Notifications.addNotificationResponseReceivedListener(
@@ -82,6 +87,10 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({
 
             if (responseListener.current) {
                 responseListener.current.remove();
+            }
+
+            if (pushTokenListener.current) {
+                pushTokenListener.current.remove();
             }
         };
     }, []);
