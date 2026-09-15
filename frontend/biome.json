@@ -21,6 +21,9 @@
               "noUnusedImports": {
                 "level": "warn",
                 "fix": "safe"
+              },
+              "useExhaustiveDependencies": {
+                "level": "off"
               }
             }
         }

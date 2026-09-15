@@ -2,7 +2,7 @@ import * as Notifications from "expo-notifications";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import { NotificationProvider } from "@/context/NotificationContext";
+import { NotificationProvider } from "@/presentation/context/NotificationContext";
 
 Notifications.setNotificationHandler({
     handleNotification: async () => ({
