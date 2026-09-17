@@ -5,6 +5,7 @@ export interface CreateDeviceInput {
     pushToken: string;
     appVersion: string;
     platform: string;
+    notificationsEnabled: boolean;
 }
 
 export default class CreateDeviceUseCase {
@@ -15,6 +16,7 @@ export default class CreateDeviceUseCase {
             pushToken: input.pushToken,
             appVersion: input.appVersion,
             platform: input.platform,
+            active: input.notificationsEnabled,
         });
 
         await setItemAsync("credentialsToken", device.data.deviceToken);

@@ -1,8 +1,13 @@
 import { Tabs } from "expo-router";
+import { colors } from "@/presentation/theme/tokens";
 
 export default function TabLayout() {
     return (
-        <Tabs>
+        <Tabs
+            screenOptions={{
+                sceneStyle: { backgroundColor: colors.background },
+            }}
+        >
             <Tabs.Screen
                 name="index"
                 options={{

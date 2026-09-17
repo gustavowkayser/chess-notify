@@ -1,0 +1,74 @@
+{
+    "app": {
+        "title": "Chess Notify"
+    },
+    "language": {
+        "select": "Language",
+        "en": "English",
+        "pt": "Português",
+        "es": "Español"
+    },
+    "alerts": {
+        "on": "Alerts on",
+        "off": "Alerts off",
+        "pending": "Alerts",
+        "updateFailed": "Couldn't update notifications"
+    },
+    "notifications": {
+        "roundNotifications": "Round Notifications"
+    },
+    "search": {
+        "placeholder": "Search or paste a tournament link",
+        "clear": "Clear search",
+        "findTournament": "Find a tournament",
+        "findTournamentDesc": "Search by tournament name, or paste a tournament link to subscribe.",
+        "searchFailed": "Couldn't search tournaments",
+        "alreadySubscribed": "Already subscribed",
+        "tournamentLink": "Tournament link",
+        "keepTyping": "Keep typing",
+        "keepTypingDesc": "Enter at least {{count}} characters to search by name.",
+        "noResults": "No results for “{{query}}”",
+        "noResultsDesc": "Try another name, or paste the tournament link to subscribe.",
+        "searchingExternal": "Searching chess-results.com…",
+        "tournamentsFound_one": "{{count}} tournament found",
+        "tournamentsFound_other": "{{count}} tournaments found"
+    },
+    "tournament": {
+        "cardHint": "Opens the tournament page. Long press for more options.",
+        "roundsLeft_one": "· {{count}} round left",
+        "roundsLeft_other": "· {{count}} rounds left",
+        "openPage": "Open page",
+        "roundOf": "Round {{current}} of {{total}}",
+        "notStarted": "Not started",
+        "inProgress": "In progress",
+        "finalRound": "Final round",
+        "waitingForPairings": "Waiting for pairings"
+    },
+    "subscriptions": {
+        "title": "Subscriptions",
+        "hint": "Hold a card for options",
+        "emptyTitle": "No tournaments yet",
+        "addTournament": "Add tournament",
+        "summaryTitle": "Tournaments you follow",
+        "summarySubtitle": "{{inProgress}} in progress · {{notStarted}} not started",
+        "unsubscribeTitle": "Unsubscribe?",
+        "unsubscribeMessage": "You'll stop getting round alerts for {{name}}.",
+        "unsubscribeFailed": "Couldn't unsubscribe"
+    },
+    "common": {
+        "cancel": "Cancel",
+        "remove": "Remove",
+        "subscribe": "Subscribe",
+        "unsubscribe": "Unsubscribe",
+        "tryAgain": "Try again",
+        "tryAgainDesc": "Please try again."
+    },
+    "errors": {
+        "generic": "Something went wrong. Please try again.",
+        "deviceRegistrationFailed": "Couldn't register this device",
+        "loadTournamentsFailed": "Couldn't load your tournaments",
+        "unauthorized": "This device is not registered yet.",
+        "network": "Couldn't reach the server. Check your connection.",
+        "invalidLink": "That doesn't look like a tournament link."
+    }
+}

@@ -61,9 +61,11 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({
                 setNotification(notification);
             });
 
-        pushTokenListener.current = Notifications.addPushTokenListener((pushToken) => {
-            setExpoPushToken(pushToken.data);
-        });
+        pushTokenListener.current = Notifications.addPushTokenListener(
+            (pushToken) => {
+                setExpoPushToken(pushToken.data);
+            },
+        );
 
         responseListener.current =
             Notifications.addNotificationResponseReceivedListener(

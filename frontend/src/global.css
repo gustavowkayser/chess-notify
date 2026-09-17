@@ -4,15 +4,39 @@
 
 @import "nativewind/theme";
 
-:root {
-    --font-display:
-        Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji,
-        Segoe UI Symbol, Noto Color Emoji;
-    --font-mono:
-        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
-        Courier New, monospace;
-    --font-rounded:
-        "SF Pro Rounded", "Hiragino Maru Gothic ProN", Meiryo, "MS PGothic",
-        sans-serif;
-    --font-serif: Georgia, "Times New Roman", serif;
+/*
+ * Design tokens. Values mirrored in src/presentation/theme/tokens.ts for
+ * effects that can only be expressed through the style prop (gradients,
+ * shadows, blur tints).
+ */
+@theme {
+    /*
+     * Scales in px: react-native-css inlines rem inside theme variables at a
+     * fixed 14px, which would shrink every spacing and type step.
+     */
+    --spacing: 4px;
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --text-xl: 20px;
+    --text-6xl: 60px;
+    --radius-2xl: 16px;
+
+    --color-background: #000000;
+    --color-surface: #0f1116;
+    --color-surface-raised: #161920;
+    --color-hairline: #1d2028;
+    --color-smoke: #f2f2f4;
+    --color-muted: #8d909b;
+    --color-subtle: #565a66;
+    --color-accent: #a9c4ff;
+    --color-accent-deep: #1b2a52;
+    --color-glow: #1b45ff;
+    --color-danger: #ff9494;
+
+    --font-inter: "Inter_400Regular";
+    --font-inter-medium: "Inter_500Medium";
+    --font-inter-semibold: "Inter_600SemiBold";
+    --font-inter-bold: "Inter_700Bold";
 }

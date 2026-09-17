@@ -10,6 +10,8 @@ interface UpsertDeviceRequest {
     pushToken: string;
     appVersion: string;
     platform: string;
+    /** Whether the device receives round notifications. */
+    active: boolean;
 }
 
 interface UpsertDeviceResponse {

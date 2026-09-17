@@ -18,14 +18,19 @@
         "rules": {
             "preset": "recommended",
             "correctness": {
-              "noUnusedImports": {
-                "level": "warn",
-                "fix": "safe"
-              },
-              "useExhaustiveDependencies": {
-                "level": "off"
-              }
+                "noUnusedImports": {
+                    "level": "warn",
+                    "fix": "safe"
+                },
+                "useExhaustiveDependencies": {
+                    "level": "off"
+                }
             }
+        }
+    },
+    "css": {
+        "parser": {
+            "tailwindDirectives": true
         }
     },
     "javascript": {
