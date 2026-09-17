@@ -110,6 +110,7 @@ func (s *Service) UpsertDevice(
 			device.PushToken = req.PushToken
 			device.AppVersion = req.AppVersion
 			device.Platform = req.Platform
+			device.Active = req.Active
 			device.Credentials = *credentials
 
 			err := s.repository.Update(ctx, device.ID, device)
@@ -132,6 +133,7 @@ func (s *Service) UpsertDevice(
 		PushToken:      req.PushToken,
 		Platform:       req.Platform,
 		AppVersion:     req.AppVersion,
+		Active:         req.Active,
 	}
 
 	err := s.repository.Create(ctx, device)

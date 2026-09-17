@@ -28,8 +28,9 @@ func (r *repository) Create(ctx context.Context, device *Device) error {
 			credentials_hash,
 			push_token,
 			platform,
-			app_version
-		) VALUES ($1, $2, $3, $4, $5);
+			app_version,
+			active
+		) VALUES ($1, $2, $3, $4, $5, $6);
 	`
 
 	_, err := r.db.ExecContext(
@@ -40,6 +41,7 @@ func (r *repository) Create(ctx context.Context, device *Device) error {
 		device.PushToken, 
 		device.Platform, 
 		device.AppVersion,
+		device.Active,
 	)
 
 	return err
@@ -119,11 +121,12 @@ func (r *repository) FindByCredentialsHash(ctx context.Context, hash string) (*D
 func (r *repository) Update(ctx context.Context, id string, device *Device) error {
 	query := `
 		UPDATE devices SET
-		push_token = $1
-		WHERE id = $2
+		push_token = $1,
+		active = $2
+		WHERE id = $3
 	`
 
-	_, err := r.db.ExecContext(ctx, query, device.PushToken, id)
+	_, err := r.db.ExecContext(ctx, query, device.PushToken, device.Active, id)
 
 	return err
 }

@@ -24,6 +24,7 @@ type UpsertDeviceRequest struct {
 	PushToken string `json:"pushToken"`
 	Platform string `json:"platform"`
 	AppVersion string `json:"appVersion"`
+	Active bool `json:"active"`
 }
 
 type UpsertDeviceResponse struct {
