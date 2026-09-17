@@ -19,7 +19,7 @@ type App struct {
 
 	DeviceHandler       *device.Handler
 	SubscriptionHandler *subscription.Handler
-	// TournamentHandler *tournament.Handler
+	TournamentHandler   *tournament.Handler
 	AuthMiddleware  func(http.Handler) http.Handler
 	LogMiddleware   func(http.Handler) http.Handler
 	TournamentJob   *tournament.Job
@@ -71,7 +71,7 @@ func New() (*App, error) {
 	tournamentService := tournament.NewService(chessProvider, tournamentRepository)
 	tournamentJob := tournament.NewJob(tournamentService, notificationCh)
 	notificationJob := notification.NewJob(notificationService, notificationCh)
-	// tournamentHandler := tournament.NewHandler(tournamentService)
+	tournamentHandler := tournament.NewHandler(tournamentService)
 
 	return &App{
 		Config:              config,
@@ -82,7 +82,7 @@ func New() (*App, error) {
 		LogMiddleware:       logMiddleware,
 		TournamentJob:       tournamentJob,
 		NotificationJob:     notificationJob,
-		// TournamentHandler: tournamentHandler,
+		TournamentHandler:   tournamentHandler,
 	}, nil
 }
 

@@ -2,6 +2,7 @@ package notification
 
 import (
 	"context"
+	"fmt"
 	"log"
 )
 
@@ -36,7 +37,7 @@ func (s *Service) SendNotification(
 			ctx,
 			sub.DevicePushToken,
 			"Nova rodada: "+sub.TournamentName,
-			"Rodada "+string(sub.TournamentRound)+" de "+string(sub.TournamentTotal)+" lançada",
+			fmt.Sprintf("Rodada %d de %d emparceirada", sub.TournamentRound, sub.TournamentTotal),
 			map[string]string{},
 		)
 

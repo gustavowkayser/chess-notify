@@ -104,6 +104,7 @@ func (h *Handler) ListSubscriptions(w http.ResponseWriter, r *http.Request) {
 			ID:                    sub.ID,
 			TournamentID:          sub.TournamentID,
 			TournamentName:        sub.TournamentName,
+			TournamentURL:         sub.TournamentURL,
 			TournamentRound:       sub.TournamentRound,
 			TournamentTotalRounds: sub.TournamentTotalRounds,
 		})

@@ -6,11 +6,14 @@ import (
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/hex"
+	"errors"
 	"fmt"
 
 	"github.com/google/uuid"
 	"golang.org/x/crypto/argon2"
 )
+
+var ErrDeviceNotFound = errors.New("device not found")
 
 type Service struct {
 	repository  Repository
@@ -50,10 +53,14 @@ func (s *Service) RegisterDevice(ctx context.Context, req RegisterDeviceRequest)
 }
 
 func (s *Service) Authenticate(ctx context.Context, token string) (*middleware.Device, error) {
-	device, err := s.repository.FindByCredentialsHash(ctx, token)
+	device, err := s.repository.FindByCredentialsHash(ctx, s.hashPassword(token))
 
 	if err != nil {
 		return nil, err
+	}
+
+	if device == nil {
+		return nil, ErrDeviceNotFound
 	}
 
 	d := middleware.Device{

@@ -71,6 +71,7 @@ func (r *repository) ListWithTournament(ctx context.Context, deviceId string) (*
 		subscriptions.id,
 		tournaments.id,
 		tournaments.name,
+		tournaments.url,
 		tournaments.current_round,
 		tournaments.total_rounds
 		FROM subscriptions
@@ -92,6 +93,7 @@ func (r *repository) ListWithTournament(ctx context.Context, deviceId string) (*
 			&subscription.ID,
 			&subscription.TournamentID,
 			&subscription.TournamentName,
+			&subscription.TournamentURL,
 			&subscription.TournamentRound,
 			&subscription.TournamentTotalRounds,
 		)

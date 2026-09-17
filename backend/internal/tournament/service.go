@@ -3,7 +3,9 @@ package tournament
 import (
 	"chess-notify/internal/notification"
 	"context"
+	"errors"
 	"log"
+	"strings"
 	"sync"
 )
 
@@ -99,4 +101,20 @@ func (s *Service) Worker(
 			return
 		}
 	}
+}
+
+func (s *Service) SearchTournaments(ctx context.Context, query string) (*[]TournamentView, error) {
+	query = strings.TrimSpace(query)
+
+	if query == "" {
+		return nil, errors.New("Search query must not be empty")
+	}
+
+	tournaments, err := s.provider.SearchTournaments(query)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return tournaments, nil
 }
