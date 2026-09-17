@@ -1,72 +1,30 @@
 package tournament
 
 import (
-	"chess-notify/internal/chessresults"
-	"chess-notify/internal/database"
-	"log"
-	"strconv"
+	"chess-notify/internal/notification"
+	"context"
+
+	"github.com/robfig/cron/v3"
 )
 
 type Job struct {
-	provider      *chessresults.ChessResultsProvider
-	repo          *database.Repository
-	notifications *chan *database.Tournament
+	service *Service
+	notificationCh chan *notification.Notification
 }
 
-func NewJob(provider *chessresults.ChessResultsProvider, repo *database.Repository, notChannel *chan *database.Tournament) Job {
-	return Job{
-		provider:      provider,
-		repo:          repo,
-		notifications: notChannel,
-	}
+func NewJob(service *Service, notificationCh chan *notification.Notification) *Job {
+	return &Job{ service: service, notificationCh: notificationCh, }
 }
 
-func (j *Job) RefreshHandler() {
-	// This function will execute every 1 minute
+func (j *Job) InitRefresh() {
+	c := cron.New()
+	c.AddFunc("@every 1m", j.Refresh)
 
-	log.Println("Starting refresh...")
-
-	tournaments, err := j.repo.GetActiveTournaments()
-
-	log.Printf("Found %d tournaments", len(*tournaments))
-
-	if err != nil {
-		log.Printf("Error ocurred when refreshing: %s\n", err.Error())
-		return
-	}
-
-	jobs := make(chan *database.Tournament)
-
-	for i := 0; i < 10; i++ {
-		go worker(jobs, *j.notifications, j.provider)
-	}
-
-	for _, tournament := range *tournaments {
-		jobs <- &tournament
-	}
-
-	close(jobs)
+	c.Start()
 }
 
-func worker(jobs chan *database.Tournament, ch chan *database.Tournament, provider *chessresults.ChessResultsProvider) {
-	for tournament := range jobs {
-		updatedTournament, err := provider.GetTournament(tournament.URL)
-
-		if err != nil {
-			log.Printf("Error when fetching tournament %s: %s\n", tournament.URL, err.Error())
-			continue
-		}
-
-		currentRound := tournament.CurrentRound
-		updatedRound := updatedTournament.CurrentRound
-
-		log.Printf("Current Round: %s", strconv.Itoa(currentRound))
-
-		if currentRound == updatedRound {
-			continue
-		}
-		
-		log.Printf("New round pairing for %s", tournament.ID)
-		ch <- updatedTournament
-	}
+func (j *Job) Refresh() {
+	// Runs every minute
+	ctx := context.Background()
+	j.service.Refresh(ctx, j.notificationCh)
 }

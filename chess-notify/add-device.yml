@@ -1,0 +1,22 @@
+name: Add Device
+method: POST
+url: $host/v1/devices
+timeout: 0
+followRedirects: true
+maxRedirects: 5
+body: |-
+  {
+    "pushToken": "abc",
+    "appVersion": "1.0.0",
+    "platform": "android"
+  }
+body_type: json
+capture:
+  device_token:
+    value: body.data.deviceToken
+    persist: secret
+assert:
+  - expression: status
+    operator: equals
+    value: 200
+    enabled: false

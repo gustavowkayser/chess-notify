@@ -1,0 +1,13 @@
+lastRequest: create-subscription
+create-subscription:
+  request: body
+  response: body
+add-device:
+  request: body
+  response: body
+remove-subscription:
+  request: pathParams
+  response: body
+list-subscriptions:
+  request: auth
+  response: body

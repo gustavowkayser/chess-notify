@@ -1,0 +1,538 @@
+- id: 8ef85362-4c5c-4dad-9028-67fdab9f66b8
+  timestamp: 1789233816569
+  envName: development
+  network:
+    - timeMs: 0.013004000298678875
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.13390300050377846
+      type: request
+      message: POST http://localhost:8080/v1/devices
+    - timeMs: 16.278789000585675
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 16.385751999914646
+      type: body
+      message: Body received - 199 bytes
+    - timeMs: 16.391902999952435
+      type: complete
+      message: Completed in 16ms
+  request:
+    id: add-device
+    name: Add Device
+    method: POST
+    url: http://localhost:8080/v1/devices
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "pushToken": "abc",
+        "appVersion": "1.0.0",
+        "platform": "android"
+      }
+    bodyType: json
+    auth:
+      type: none
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '199'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 17:23:36 GMT
+    body: >
+      {"data":{"deviceId":"9b0c3f99-d576-4685-8c8f-528eafe89958","deviceToken":"[REDACTED]"},"message":"Device
+      registered successfuly","success":true}
+    timeMs: 16.405137000605464
+    size: 199
+- id: fa50ed4f-9325-4fc7-9b90-f65577366e07
+  timestamp: 1789182516528
+  envName: development
+  network:
+    - timeMs: 0.053870000000642904
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 1.8304040000002715
+      type: request
+      message: POST http://localhost:8080/v1/devices
+    - timeMs: 18.971706000000268
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 19.216300000000047
+      type: body
+      message: Body received - 199 bytes
+    - timeMs: 19.22316200000023
+      type: complete
+      message: Completed in 19ms
+  request:
+    id: add-device
+    name: Add Device
+    method: POST
+    url: http://localhost:8080/v1/devices
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "pushToken": "abc",
+        "appVersion": "1.0.0",
+        "platform": "android"
+      }
+    bodyType: json
+    auth:
+      type: none
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '199'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 03:08:36 GMT
+    body: >
+      {"data":{"deviceId":"dc352c5d-d0a4-4417-be11-470443447691","deviceToken":"[REDACTED]"},"message":"Device
+      registered successfuly","success":true}
+    timeMs: 19.245373000000654
+    size: 199
+- id: c1ac8bdd-a64f-4b21-9b6a-b42d991221a8
+  timestamp: 1789180211196
+  envName: development
+  assertions:
+    evaluated: true
+    results:
+      - expression: status
+        operator: equals
+        expected: 200
+        actual: 200
+        passed: true
+        message: Assertion passed
+  network:
+    - timeMs: 0.04459299996960908
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.4077050000196323
+      type: request
+      message: POST http://localhost:8080/v1/devices
+    - timeMs: 4.1423070000018924
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 4.225081000011414
+      type: body
+      message: Body received - 199 bytes
+    - timeMs: 4.233605999965221
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: add-device
+    name: Add Device
+    method: POST
+    url: http://localhost:8080/v1/devices
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "pushToken": "abc",
+        "appVersion": "1.0.0",
+        "platform": "android"
+      }
+    bodyType: json
+    auth:
+      type: none
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '199'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:30:11 GMT
+    body: >
+      {"data":{"deviceId":"7b337bfa-adbc-4282-ab6a-50fb87bc9913","deviceToken":"770926a90c88f762b3627b20e00ca07e6cd9df0d973b60b5d41798d5aac52691"},"message":"Device
+      registered successfuly","success":true}
+    timeMs: 4.257099999929778
+    size: 199
+- id: 2ee4262a-5bef-4c60-aa66-881ac3cb114e
+  timestamp: 1789179572208
+  envName: development
+  network:
+    - timeMs: 0.016770999995060265
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.22371500000008382
+      type: request
+      message: POST http://localhost:8080/v1/devices
+    - timeMs: 19.41771300000255
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 19.55673999999999
+      type: body
+      message: Body received - 199 bytes
+    - timeMs: 19.567230000015115
+      type: complete
+      message: Completed in 20ms
+  request:
+    id: add-device
+    name: Add Device
+    method: POST
+    url: http://localhost:8080/v1/devices
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "pushToken": "abc",
+        "appVersion": "1.0.0",
+        "platform": "android"
+      }
+    bodyType: json
+    auth:
+      type: none
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '199'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:19:32 GMT
+    body: >
+      {"data":{"deviceId":"f7f4d184-35d2-43c6-a179-c3fbd5f74c4f","deviceToken":"3dbe45e1c11fe4f568d6dcbce8b0de977dd64e66428456fb655b6c389e33d5a8"},"message":"Device
+      registered successfuly","success":true}
+    timeMs: 19.586986999987857
+    size: 199
+- id: efa6c2b9-c954-408e-b79d-2ab83c579cbb
+  timestamp: 1789179516143
+  envName: development
+  network:
+    - timeMs: 0.050398999999742955
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 1.9424310000031255
+      type: request
+      message: POST http://localhost:8080/v1/devices
+    - timeMs: 8.263699000002816
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 8.53137300000526
+      type: body
+      message: Body received - 138 bytes
+    - timeMs: 8.545049999986077
+      type: complete
+      message: Completed in 9ms
+  request:
+    id: add-device
+    name: Add Device
+    method: POST
+    url: http://localhost:8080/v1/devices
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+          "pushToken": "abc",
+          "appVersion": "1.0.0",
+          "platform": "android"
+      }
+    bodyType: json
+    auth:
+      type: none
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '138'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:18:36 GMT
+    body: >
+      {"data":{"deviceId":"850eda92-b214-4c80-8987-286adef7df67","deviceToken":"abc"},"message":"Device
+      registered successfuly","success":true}
+    timeMs: 8.569687999988673
+    size: 138
+- id: 4b23a21e-2a89-4ccb-b5fa-37fdc6986cce
+  timestamp: 1789179305214
+  envName: development
+  network:
+    - timeMs: 0.013445000004139729
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.30422299999918323
+      type: request
+      message: POST http://localhost:8080/v1/devices
+    - timeMs: 4.258870000005118
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 4.309093000003486
+      type: body
+      message: Body received - 134 bytes
+    - timeMs: 4.313651000004029
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: add-device
+    name: Add Device
+    method: POST
+    url: http://localhost:8080/v1/devices
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+          "pushToken": "abc",
+          "appVersion": "1",
+          "platform": "android"
+      }
+    bodyType: json
+    auth:
+      type: none
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '134'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:15:05 GMT
+    body: >
+      {"error":"pq: invalid byte sequence for encoding \"UTF8\": 0xb5
+      (22021)","message":"Error trying to register device","success":false}
+    timeMs: 4.324040999999852
+    size: 134
+- id: 92113b40-2b28-4e55-b75e-3ab4d46efef5
+  timestamp: 1789179296180
+  envName: development
+  network:
+    - timeMs: 0.058368000005430076
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 2.170024999999441
+      type: request
+      message: POST http://localhost:8080/v1/devices
+    - timeMs: 11.55950799999846
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 17.926649000000907
+      type: body
+      message: Body received - 134 bytes
+    - timeMs: 17.983564000001934
+      type: complete
+      message: Completed in 18ms
+  request:
+    id: add-device
+    name: Add Device
+    method: POST
+    url: http://localhost:8080/v1/devices
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+          "pushToken": "abc",
+          "appVersion": "1.0.0",
+          "platform": "android"
+      }
+    bodyType: json
+    auth:
+      type: none
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '134'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:14:56 GMT
+    body: >
+      {"error":"pq: invalid byte sequence for encoding \"UTF8\": 0xfa
+      (22021)","message":"Error trying to register device","success":false}
+    timeMs: 18.014140999999654
+    size: 134
+- id: af88ea00-d4cd-482b-b376-9acac04a6ed4
+  timestamp: 1789178896424
+  envName: development
+  network:
+    - timeMs: 0.011661999975331128
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.13720399991143495
+      type: request
+      message: POST http://localhost:8080/v1/devices
+    - timeMs: 4.232350999955088
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 4.278175999992527
+      type: body
+      message: Body received - 134 bytes
+    - timeMs: 4.280579999904148
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: add-device
+    name: Add Device
+    method: POST
+    url: http://localhost:8080/v1/devices
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+          "pushToken": "abc",
+          "platform": "android",
+          "appVersion": "1.0.0"
+      }
+    bodyType: json
+    auth:
+      type: none
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '134'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:08:16 GMT
+    body: >
+      {"error":"pq: invalid byte sequence for encoding \"UTF8\": 0xad
+      (22021)","message":"Error trying to register device","success":false}
+    timeMs: 4.29190099996049
+    size: 134
+- id: 8ceeb941-500f-4598-a6e3-20bbcbd73236
+  timestamp: 1789178811161
+  envName: development
+  network:
+    - timeMs: 0.03893199993763119
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.2531489999964833
+      type: request
+      message: POST http://localhost:8080/v1/devices
+    - timeMs: 3.49446600000374
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 3.5770890000276268
+      type: body
+      message: Body received - 166 bytes
+    - timeMs: 3.5825889999978244
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: add-device
+    name: Add Device
+    method: POST
+    url: http://localhost:8080/v1/devices
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+          "pushToken": "abc",
+          "platform": "android",
+          "appVersion": "1.0.0"
+      }
+    bodyType: json
+    auth:
+      type: none
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '166'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:06:51 GMT
+    body: >
+      {"error":"pq: column \"credential_hash\" of relation \"devices\" does not
+      exist at position 4:4 (42703)","message":"Error trying to register
+      device","success":false}
+    timeMs: 3.6016339999623597
+    size: 166
+- id: dfe9458e-f29c-415c-b433-3da5ccbd365a
+  timestamp: 1789178747349
+  envName: development
+  network:
+    - timeMs: 0.016890999977476895
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.19874799996614456
+      type: request
+      message: POST http://localhost:8080/v1/devices
+    - timeMs: 3.6876829999964684
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 3.754936999990605
+      type: body
+      message: Body received - 130 bytes
+    - timeMs: 3.7601169999688864
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: add-device
+    name: Add Device
+    method: POST
+    url: http://localhost:8080/v1/devices
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+          "pushToken": "abc",
+          "platform": "android",
+          "appVersion": "1.0.0"
+      }
+    bodyType: json
+    auth:
+      type: none
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '130'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:05:47 GMT
+    body: >
+      {"error":"pq: syntax error at or near \")\" at position 8:3
+      (42601)","message":"Error trying to register device","success":false}
+    timeMs: 3.7735319999046624
+    size: 130
+- id: 708112d9-6b32-44e5-b66f-8826923feb8e
+  timestamp: 1789178612458
+  envName: development
+  network:
+    - timeMs: 0.029564999975264072
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.3070280000101775
+      type: request
+      message: POST http://localhost:8080/v1/devices
+    - timeMs: 3.6364489999832585
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 3.69671000004746
+      type: body
+      message: Body received - 130 bytes
+    - timeMs: 3.7005669999634847
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: add-device
+    name: Add Device
+    method: POST
+    url: http://localhost:8080/v1/devices
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+          "pushToken": "abc",
+          "platform": "android",
+          "appVersion": "1.0.0"
+      }
+    bodyType: json
+    auth:
+      type: none
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '130'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:03:32 GMT
+    body: >
+      {"error":"pq: syntax error at or near \")\" at position 8:3
+      (42601)","message":"Error trying to register device","success":false}
+    timeMs: 3.717058000038378
+    size: 130

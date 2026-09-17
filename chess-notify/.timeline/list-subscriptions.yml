@@ -1,0 +1,631 @@
+- id: 9d80e821-34cd-4adc-920e-17e6fe8bee3e
+  timestamp: 1789246858058
+  envName: development
+  network:
+    - timeMs: 0.011510999873280525
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.12870200001634657
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 6.027507999911904
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 6.070708999875933
+      type: body
+      message: Body received - 345 bytes
+    - timeMs: 6.077371999854222
+      type: complete
+      message: Completed in 6ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '345'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 21:00:58 GMT
+    body: >
+      {"data":[{"id":"fd461ac5-5d65-46bf-a620-29e03dbc481e","tournament_id":"ac1a55a5-fc6c-445a-810e-52239ca1872d","tournament_name":"3ª
+      etapa Circuito Municipal \"Josino Rezende\" | 12/09/26 sabado) | 13h30 às
+      17h | CLUBE XADREZ
+      PINDA","tournament_round":5,"tournament_total_rounds":5}],"message":"Listed
+      subscriptions successfuly","success":true}
+    timeMs: 6.092850999906659
+    size: 345
+- id: d9246fed-38de-42ec-af11-b83f1df25f40
+  timestamp: 1789246771467
+  envName: development
+  network:
+    - timeMs: 0.032561999978497624
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.17983999999705702
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 5.35512999992352
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 19.841247999924235
+      type: body
+      message: Body received - 340 bytes
+    - timeMs: 19.88283599994611
+      type: complete
+      message: Completed in 20ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '340'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:59:31 GMT
+    body: >
+      {"data":[{"ID":"fd461ac5-5d65-46bf-a620-29e03dbc481e","TournamentID":"ac1a55a5-fc6c-445a-810e-52239ca1872d","TournamentName":"3ª
+      etapa Circuito Municipal \"Josino Rezende\" | 12/09/26 sabado) | 13h30 às
+      17h | CLUBE XADREZ
+      PINDA","TournamentRound":5,"TournamentTotalRounds":5}],"message":"Listed
+      subscriptions successfuly","success":true}
+    timeMs: 19.93110699998215
+    size: 340
+- id: 493561ed-110c-460b-aa52-2ef4b1a9f383
+  timestamp: 1789246465786
+  envName: development
+  network:
+    - timeMs: 0.031109999981708825
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.3237649999791756
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 7.218264999915846
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 7.341582999913953
+      type: body
+      message: Body received - 144 bytes
+    - timeMs: 7.347224000026472
+      type: complete
+      message: Completed in 7ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '144'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:54:25 GMT
+    body: >
+      {"error":"json: cannot unmarshal array into Go value of type
+      map[string]interface {}","message":"Could not list
+      subscriptions","success":false}
+    timeMs: 7.39442499994766
+    size: 144
+- id: 9aae8d64-e734-47b4-a66a-dc0ae598fb04
+  timestamp: 1789246422096
+  envName: development
+  network:
+    - timeMs: 0.012854999979026616
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.13813800003845245
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 6.05233199999202
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 6.084453999996185
+      type: body
+      message: Body received - 144 bytes
+    - timeMs: 6.087390000000596
+      type: complete
+      message: Completed in 6ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '144'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:53:42 GMT
+    body: >
+      {"error":"json: cannot unmarshal array into Go value of type
+      map[string]interface {}","message":"Could not list
+      subscriptions","success":false}
+    timeMs: 6.101376999984495
+    size: 144
+- id: 35263ec1-8b73-47a5-9309-518fdb66cc27
+  timestamp: 1789246399586
+  envName: development
+  network:
+    - timeMs: 0.014247999992221594
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.1321979999775067
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 5.34387300000526
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 5.392788999946788
+      type: body
+      message: Body received - 144 bytes
+    - timeMs: 5.395924999960698
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '144'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:53:19 GMT
+    body: >
+      {"error":"json: cannot unmarshal array into Go value of type
+      map[string]interface {}","message":"Could not list
+      subscriptions","success":false}
+    timeMs: 5.4094310000073165
+    size: 144
+- id: 5fd606a5-b2fa-4663-bdb2-0723ba0a1d19
+  timestamp: 1789246376031
+  envName: development
+  network:
+    - timeMs: 0.012192999944090843
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.12778899993281811
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 7.960492999991402
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 8.02546999999322
+      type: body
+      message: Body received - 144 bytes
+    - timeMs: 8.027874999912456
+      type: complete
+      message: Completed in 8ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '144'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:52:56 GMT
+    body: >
+      {"error":"json: cannot unmarshal array into Go value of type
+      map[string]interface {}","message":"Could not list
+      subscriptions","success":false}
+    timeMs: 8.041070999926887
+    size: 144
+- id: 6b4fdd2a-d67a-49e9-8ce4-6454d33101cc
+  timestamp: 1789246324183
+  envName: development
+  network:
+    - timeMs: 0.009869999950751662
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.1252470000181347
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 5.166142000001855
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 5.224487000028603
+      type: body
+      message: Body received - 132 bytes
+    - timeMs: 5.227072000037879
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '132'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:52:04 GMT
+    body: >
+      {"error":"pq: syntax error at or near \"INNER\" at position 10:3
+      (42601)","message":"Could not list subscriptions","success":false}
+    timeMs: 5.24166099994909
+    size: 132
+- id: cdd20021-a665-4990-8358-ffe29a6777b7
+  timestamp: 1789246169062
+  envName: development
+  network:
+    - timeMs: 0.012515999958850443
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.12425599998096004
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 5.204543999978341
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 5.268836000002921
+      type: body
+      message: Body received - 132 bytes
+    - timeMs: 5.271672000002582
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '132'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:49:29 GMT
+    body: >
+      {"error":"pq: syntax error at or near \"INNER\" at position 10:3
+      (42601)","message":"Could not list subscriptions","success":false}
+    timeMs: 5.285108999989461
+    size: 132
+- id: f9f05e7a-6169-424a-8592-a5a03054f3e5
+  timestamp: 1789246132523
+  envName: development
+  network:
+    - timeMs: 0.029721999948378652
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.15464299998711795
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 5.43473699997412
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 5.489260999951512
+      type: body
+      message: Body received - 144 bytes
+    - timeMs: 5.505103999981657
+      type: complete
+      message: Completed in 6ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '144'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:48:52 GMT
+    body: >
+      {"error":"json: cannot unmarshal array into Go value of type
+      map[string]interface {}","message":"Could not list
+      subscriptions","success":false}
+    timeMs: 5.520275999966543
+    size: 144
+- id: ac5781bb-4d45-4651-a6ae-420d9d67d64e
+  timestamp: 1789246092002
+  envName: development
+  network:
+    - timeMs: 0.015638999990187585
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.1586820000084117
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 5.3795659999595955
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 5.457358999992721
+      type: body
+      message: Body received - 144 bytes
+    - timeMs: 5.471175000013318
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '144'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:48:12 GMT
+    body: >
+      {"error":"json: cannot unmarshal array into Go value of type
+      map[string]interface {}","message":"Could not list
+      subscriptions","success":false}
+    timeMs: 5.496861999970861
+    size: 144
+- id: ce4ee29f-6081-42b6-8293-2a4014ef4368
+  timestamp: 1789246042071
+  envName: development
+  network:
+    - timeMs: 0.015949999971780926
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.1403689999715425
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 5.423454999981914
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 5.481701999960933
+      type: body
+      message: Body received - 144 bytes
+    - timeMs: 5.486329999985173
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '144'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:47:22 GMT
+    body: >
+      {"error":"json: cannot unmarshal array into Go value of type
+      map[string]interface {}","message":"Could not list
+      subscriptions","success":false}
+    timeMs: 5.500716999988072
+    size: 144
+- id: 189a351c-7875-4d1d-ab98-7194dc6b886a
+  timestamp: 1789245999290
+  envName: development
+  network:
+    - timeMs: 0.018233000009786338
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.1532219999935478
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 5.204640000010841
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 5.26846699998714
+      type: body
+      message: Body received - 144 bytes
+    - timeMs: 5.272293999994872
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '144'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:46:39 GMT
+    body: >
+      {"error":"json: cannot unmarshal array into Go value of type
+      map[string]interface {}","message":"Could not list
+      subscriptions","success":false}
+    timeMs: 5.285008000006201
+    size: 144
+- id: 86987f4a-d7e3-41b7-ba34-619f4f180371
+  timestamp: 1789245916704
+  envName: development
+  network:
+    - timeMs: 0.03686799999559298
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.280285000015283
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 9.59880200002226
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 9.74112300001434
+      type: body
+      message: Body received - 144 bytes
+    - timeMs: 9.749549000000115
+      type: complete
+      message: Completed in 10ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '144'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:45:16 GMT
+    body: >
+      {"error":"json: cannot unmarshal array into Go value of type
+      map[string]interface {}","message":"Could not list
+      subscriptions","success":false}
+    timeMs: 9.7799750000122
+    size: 144
+- id: fa41c9b2-794a-4705-ae23-37b4aeacad9d
+  timestamp: 1789245874896
+  envName: development
+  network:
+    - timeMs: 0.03816999999980908
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.28861000000324566
+      type: request
+      message: GET http://localhost:8080/v1/subscriptions
+    - timeMs: 5.966692000001785
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 6.042511999999988
+      type: body
+      message: Body received - 130 bytes
+    - timeMs: 6.049184000003152
+      type: complete
+      message: Completed in 6ms
+  request:
+    id: list-subscriptions
+    name: List Subscriptions
+    method: GET
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: ''
+    bodyType: none
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '130'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 20:44:34 GMT
+    body: >
+      {"error":"pq: syntax error at or near \"FROM\" at position 8:3
+      (42601)","message":"Could not list subscriptions","success":false}
+    timeMs: 6.0662650000012945
+    size: 130

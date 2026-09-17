@@ -1,16 +1,20 @@
 package database
 
 import (
-	"context"
-	"gorm.io/driver/sqlite"
-	"gorm.io/gorm"
+	"database/sql"
+	_ "modernc.org/sqlite"
 )
 
-func NewSqliteDatabase(ctx context.Context, dsn string) (*gorm.DB, error) {
-	conn, err := gorm.Open(sqlite.Open(dsn), &gorm.Config{})
+func NewSqlite(url string) (*sql.DB, error) {
+	db, err := sql.Open("sqlite", url)
+
 	if err != nil {
 		return nil, err
 	}
 
-	return conn, err
+	if err := db.Ping(); err != nil {
+		return nil, err
+	}
+
+	return db, nil
 }

@@ -1,0 +1,74 @@
+{
+    "app": {
+        "title": "Chess Notify"
+    },
+    "language": {
+        "select": "Idioma",
+        "en": "English",
+        "pt": "Português",
+        "es": "Español"
+    },
+    "alerts": {
+        "on": "Alertas activadas",
+        "off": "Alertas desactivadas",
+        "pending": "Alertas",
+        "updateFailed": "No se pudieron actualizar las notificaciones"
+    },
+    "notifications": {
+        "roundNotifications": "Notificaciones de rondas"
+    },
+    "search": {
+        "placeholder": "Buscar o pegar enlace de torneo",
+        "clear": "Borrar búsqueda",
+        "findTournament": "Buscar torneo",
+        "findTournamentDesc": "Busca por nombre de torneo o pega un enlace para suscribirte.",
+        "searchFailed": "No se pudieron buscar torneos",
+        "alreadySubscribed": "Ya suscrito",
+        "tournamentLink": "Enlace del torneo",
+        "keepTyping": "Sigue escribiendo",
+        "keepTypingDesc": "Escribe al menos {{count}} caracteres para buscar por nombre.",
+        "noResults": "Sin resultados para “{{query}}”",
+        "noResultsDesc": "Prueba con otro nombre o pega el enlace del torneo para suscribirte.",
+        "searchingExternal": "Buscando en chess-results.com…",
+        "tournamentsFound_one": "{{count}} torneo encontrado",
+        "tournamentsFound_other": "{{count}} torneos encontrados"
+    },
+    "tournament": {
+        "cardHint": "Abre la página del torneo. Mantén presionado para ver opciones.",
+        "roundsLeft_one": "· {{count}} ronda restante",
+        "roundsLeft_other": "· {{count}} rondas restantes",
+        "openPage": "Abrir página",
+        "roundOf": "Ronda {{current}} de {{total}}",
+        "notStarted": "No iniciado",
+        "inProgress": "En curso",
+        "finalRound": "Ronda final",
+        "waitingForPairings": "Esperando emparejamientos"
+    },
+    "subscriptions": {
+        "title": "Suscripciones",
+        "hint": "Mantén presionado para opciones",
+        "emptyTitle": "Aún no hay torneos",
+        "addTournament": "Agregar torneo",
+        "summaryTitle": "Torneos que sigues",
+        "summarySubtitle": "{{inProgress}} en curso · {{notStarted}} no iniciados",
+        "unsubscribeTitle": "¿Cancelar suscripción?",
+        "unsubscribeMessage": "Dejarás de recibir alertas de rondas para {{name}}.",
+        "unsubscribeFailed": "No se pudo cancelar la suscripción"
+    },
+    "common": {
+        "cancel": "Cancelar",
+        "remove": "Eliminar",
+        "subscribe": "Suscribirse",
+        "unsubscribe": "Cancelar suscripción",
+        "tryAgain": "Reintentar",
+        "tryAgainDesc": "Por favor, inténtalo de nuevo."
+    },
+    "errors": {
+        "generic": "Algo salió mal. Por favor, inténtalo de nuevo.",
+        "deviceRegistrationFailed": "No se pudo registrar este dispositivo",
+        "loadTournamentsFailed": "No se pudieron cargar tus torneos",
+        "unauthorized": "Este dispositivo aún no está registrado.",
+        "network": "No se pudo conectar al servidor. Revisa tu conexión.",
+        "invalidLink": "Eso no parece un enlace de torneo."
+    }
+}

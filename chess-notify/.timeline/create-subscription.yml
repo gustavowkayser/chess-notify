@@ -1,0 +1,1341 @@
+- id: 6fd86a4e-1d6d-4a88-a178-f44eed50dcbe
+  timestamp: 1789236105495
+  envName: development
+  network:
+    - timeMs: 0.01321299996925518
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.19631500000832602
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 910.5739079999621
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 910.761737999972
+      type: body
+      message: Body received - 136 bytes
+    - timeMs: 910.7747319999617
+      type: complete
+      message: Completed in 911ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentUrl": "https://s1.chess-results.com/tnr1495638.aspx"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '136'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 18:01:45 GMT
+    body: >
+      {"data":{"subscription_id":"fd461ac5-5d65-46bf-a620-29e03dbc481e"},"message":"Subscribed
+      to the tournament successfuly","success":true}
+    timeMs: 910.8037940000067
+    size: 136
+- id: 63f0522c-2a70-44ba-b3d3-7f59a94598e9
+  timestamp: 1789236013630
+  envName: development
+  network:
+    - timeMs: 0.012202000012621284
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.1501120000029914
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 7.595017000014195
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 7.677106000017375
+      type: body
+      message: Body received - 136 bytes
+    - timeMs: 7.6811129999987315
+      type: complete
+      message: Completed in 8ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentUrl": "https://s1.chess-results.com/tnr1495638.aspx"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '136'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 18:00:13 GMT
+    body: >
+      {"data":{"subscription_id":"da333e37-df29-429c-b3a1-59ba704e3f9b"},"message":"Subscribed
+      to the tournament successfuly","success":true}
+    timeMs: 7.693736000015633
+    size: 136
+- id: f1f6c8c9-11ee-473a-af98-8a53e505d6e4
+  timestamp: 1789234212348
+  envName: development
+  network:
+    - timeMs: 0.027580000460147858
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.17789299972355366
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.983548000454903
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 5.020844999700785
+      type: body
+      message: Body received - 185 bytes
+    - timeMs: 5.023749999701977
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentUrl": "https://s1.chess-results.com/tnr1495638.aspx"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '185'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 17:30:12 GMT
+    body: >
+      {"error":"pq: duplicate key value violates unique constraint
+      \"subscriptions_device_id_tournament_id_key\" (23505)","message":"Error
+      trying to subscribe to tournament","success":false}
+    timeMs: 5.0401200000196695
+    size: 185
+- id: f5a48387-aeba-4244-af80-94a51edf71b6
+  timestamp: 1789234039482
+  envName: development
+  network:
+    - timeMs: 0.03882999997586012
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.33005800005048513
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 7.020547000691295
+      type: response
+      message: 200 OK - 3 headers
+    - timeMs: 7.132059000432491
+      type: body
+      message: Body received - 135 bytes
+    - timeMs: 7.145644000731409
+      type: complete
+      message: Completed in 7ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentUrl": "https://s1.chess-results.com/tnr1495638.aspx"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 200
+    statusText: OK
+    headers:
+      content-length: '135'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 17:27:19 GMT
+    body: >
+      {"data":{"SubscriptionId":"f04c5fd6-2fdc-480e-a86c-8ce2936354c0"},"message":"Subscribed
+      to the tournament successfuly","success":true}
+    timeMs: 7.1759290006011724
+    size: 135
+- id: f86d93e0-3e6d-49a4-ac04-62228ffeac74
+  timestamp: 1789233822173
+  envName: development
+  network:
+    - timeMs: 0.03832900058478117
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.3715630006045103
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 999.9306439999491
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 1000.0367259997874
+      type: body
+      message: Body received - 133 bytes
+    - timeMs: 1000.0419150004163
+      type: complete
+      message: Completed in 1000ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentUrl": "https://s1.chess-results.com/tnr1495638.aspx"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '133'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 17:23:42 GMT
+    body: >
+      {"error":"pq: invalid input syntax for type uuid: \"\"
+      (22P02)","message":"Error trying to subscribe to
+      tournament","success":false}
+    timeMs: 1000.0589760001749
+    size: 133
+- id: 92fbf16f-b4ec-4957-a410-61925179193e
+  timestamp: 1789233803658
+  envName: development
+  network:
+    - timeMs: 0.016971000470221043
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.1654200004413724
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 9.402412000112236
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 9.532428000122309
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 9.53904000017792
+      type: complete
+      message: Completed in 10ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentUrl": "https://s1.chess-results.com/tnr1495638.aspx"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 17:23:23 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 9.553175000473857
+    size: 67
+- id: c4d00fcf-e200-489e-a1ad-03f4fa30c9bc
+  timestamp: 1789233473311
+  envName: development
+  network:
+    - timeMs: 0.013875000178813934
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.14887999929487705
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.787394999526441
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 4.857441999949515
+      type: body
+      message: Body received - 149 bytes
+    - timeMs: 4.863932999782264
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentUrl": "https://s1.chess-results.com/tnr1495638.aspx"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '149'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 17:17:53 GMT
+    body: >
+      {"error":"pq: column \"current_round\" does not exist at position 2:25
+      (42703)","message":"Error trying to subscribe to
+      tournament","success":false}
+    timeMs: 4.874441999942064
+    size: 149
+- id: eb560ff0-c080-4040-9258-cf46aa7d1140
+  timestamp: 1789182520913
+  envName: development
+  network:
+    - timeMs: 0.017241999999896507
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.17738900000040303
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.364815999999337
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 4.452128000000812
+      type: body
+      message: Body received - 136 bytes
+    - timeMs: 4.457468000000517
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '136'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 03:08:40 GMT
+    body: >
+      {"error":"pq: invalid input syntax for type uuid: \"abc\"
+      (22P02)","message":"Error trying to subscribe to
+      tournament","success":false}
+    timeMs: 4.467827000000398
+    size: 136
+- id: 068e713d-9dac-47de-8618-25050e6c4981
+  timestamp: 1789182153044
+  envName: development
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  error:
+    message: 'requests.substitute: unresolved variable "device_token" in auth.token'
+- id: e56f6351-eca5-41af-ad10-64c82aa7293f
+  timestamp: 1789181738698
+  envName: development
+  network:
+    - timeMs: 0.01460699999006465
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.20707499998388812
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 5.470999000011943
+      type: response
+      message: 400 Bad Request - 3 headers
+    - timeMs: 5.5314520000247285
+      type: body
+      message: Body received - 136 bytes
+    - timeMs: 5.53937600000063
+      type: complete
+      message: Completed in 6ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 400
+    statusText: Bad Request
+    headers:
+      content-length: '136'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:55:38 GMT
+    body: >
+      {"error":"pq: invalid input syntax for type uuid: \"abc\"
+      (22P02)","message":"Error trying to subscribe to
+      tournament","success":false}
+    timeMs: 5.567158000019845
+    size: 136
+- id: ad71ba21-1336-4cf1-8f55-5e187cecccf3
+  timestamp: 1789181689481
+  envName: development
+  network:
+    - timeMs: 0.024135000014211982
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.23512800002936274
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 6.605855000030715
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 6.691624999977648
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 6.698787999979686
+      type: complete
+      message: Completed in 7ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:54:49 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 6.7156599999871105
+    size: 67
+- id: 7a90dfb1-769f-4555-9e78-eb5cbbb7d4e6
+  timestamp: 1789181585435
+  envName: development
+  network:
+    - timeMs: 0.025597999978344887
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.2822959999903105
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 5.698707999952603
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 5.746516999963205
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 5.749922999995761
+      type: complete
+      message: Completed in 6ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:53:05 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 5.7608539999928325
+    size: 67
+- id: 7c2a8c48-4d84-428c-9392-b0e28575dce7
+  timestamp: 1789181560978
+  envName: development
+  network:
+    - timeMs: 0.01510800002142787
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.1509010000154376
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 5.456990000006044
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 5.5133849999983795
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 5.51821400001063
+      type: complete
+      message: Completed in 6ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:52:40 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 5.530706999998074
+    size: 67
+- id: ff1848cc-e4b6-4ecd-8341-89ba956d8f1d
+  timestamp: 1789181524651
+  envName: development
+  network:
+    - timeMs: 0.01502799999434501
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.15020999999251217
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 5.2868669999879785
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 5.402602999994997
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 5.410216999996919
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:52:04 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 5.435473999998067
+    size: 67
+- id: 674101b7-04f3-4fd8-b87d-084226343df1
+  timestamp: 1789181364295
+  envName: development
+  network:
+    - timeMs: 0.014026000004378147
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.18121500000415836
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 6.987386000000697
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 7.182477000002109
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 7.208456000000297
+      type: complete
+      message: Completed in 7ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:49:24 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 7.222742000005383
+    size: 67
+- id: ce5a2619-e27a-4d4e-a707-5f29e553f160
+  timestamp: 1789181332522
+  envName: development
+  network:
+    - timeMs: 0.055963999999221414
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 2.0226050000019313
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 7.780896000000212
+      type: error
+      message: 'requests.send: fetch failed'
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  error:
+    message: 'requests.send: fetch failed'
+- id: cd025478-7622-4609-95fe-71a10e4fd2fe
+  timestamp: 1789181231891
+  envName: development
+  network:
+    - timeMs: 0.0485099998768419
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.31585499993525445
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 5.411869999952614
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 5.517645999789238
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 5.529407999943942
+      type: complete
+      message: Completed in 6ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:47:11 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 5.557509999955073
+    size: 67
+- id: 2997717a-96bb-4bea-b8c3-a7ecaa2cea79
+  timestamp: 1789181196343
+  envName: development
+  network:
+    - timeMs: 0.03311199997551739
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.2686379998922348
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.968940999824554
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 5.055630999850109
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 5.060219999868423
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:46:36 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 5.081408999860287
+    size: 67
+- id: f011d9a1-312c-4775-b3ce-ed36847367de
+  timestamp: 1789181160429
+  envName: development
+  network:
+    - timeMs: 0.02698999992571771
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.25612400006502867
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 3.6678110000211746
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 3.73596700001508
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 3.73982400004752
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:46:00 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 3.7567350000608712
+    size: 67
+- id: dbcd8855-b955-4cfa-910a-18a461998c5a
+  timestamp: 1789181130219
+  envName: development
+  network:
+    - timeMs: 0.02915400010533631
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.2788170001003891
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 3.798553999979049
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 3.864486000034958
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 3.8776800001505762
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:45:30 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 3.904439999954775
+    size: 67
+- id: dbbf4ead-7e6b-4e4b-aebc-e0fd3c332a5a
+  timestamp: 1789181077785
+  envName: development
+  network:
+    - timeMs: 0.011061000172048807
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.1266050001140684
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.746129000093788
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 4.8170000000391155
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 4.824934000149369
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:44:37 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 4.841215000022203
+    size: 67
+- id: dce829fc-a3b4-436c-b7a7-70f8f5adc20b
+  timestamp: 1789180943647
+  envName: development
+  network:
+    - timeMs: 0.025036000180989504
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.17407200019806623
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.762248000130057
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 4.8402230001520365
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 4.847326000221074
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:42:23 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 4.870980000123382
+    size: 67
+- id: 8072c1ef-dd2f-454e-9caa-0d0178e6ca69
+  timestamp: 1789180902672
+  envName: development
+  network:
+    - timeMs: 0.028452000115066767
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.2861790000461042
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.3452459999825805
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 4.42009500018321
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 4.424633000046015
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:41:42 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 4.443569000111893
+    size: 67
+- id: 0d5cff6c-bfab-43cf-8b61-5e0c32d2b93f
+  timestamp: 1789180874398
+  envName: development
+  network:
+    - timeMs: 0.038422000128775835
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.34499899996444583
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.767950000008568
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 4.837299000006169
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 4.841977000003681
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:41:14 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 4.860901999985799
+    size: 67
+- id: 412215ed-2a46-4328-9770-fb60a77228ad
+  timestamp: 1789180733838
+  envName: development
+  network:
+    - timeMs: 0.011471000034362078
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.19697499996982515
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.711557999951765
+      type: response
+      message: 401 Unauthorized - 3 headers
+    - timeMs: 4.797616999829188
+      type: body
+      message: Body received - 67 bytes
+    - timeMs: 4.805280999979004
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '67'
+      content-type: application/json
+      date: Sat, 12 Sep 2026 02:38:53 GMT
+    body: |
+      {"error":"Invalid token","message":"Unauthorized","success":false}
+    timeMs: 4.837109999964014
+    size: 67
+- id: 12e1eff1-282f-423b-a4f9-2c9667bd1c9e
+  timestamp: 1789180564330
+  envName: development
+  network:
+    - timeMs: 0.01116100000217557
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.17081700009293854
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.884433000115678
+      type: response
+      message: 401 Unauthorized - 4 headers
+    - timeMs: 4.945415999973193
+      type: body
+      message: Body received - 13 bytes
+    - timeMs: 4.955934999976307
+      type: complete
+      message: Completed in 5ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 401
+    statusText: Unauthorized
+    headers:
+      content-length: '13'
+      content-type: text/plain; charset=utf-8
+      date: Sat, 12 Sep 2026 02:36:04 GMT
+      x-content-type-options: nosniff
+    body: |
+      Unauthorized
+    timeMs: 4.968388000037521
+    size: 13
+- id: 28b9bfc6-7c50-42e8-8d0d-a3caa27b8e0d
+  timestamp: 1789180467861
+  envName: development
+  network:
+    - timeMs: 0.02506699995137751
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.18709699995815754
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.84563499991782
+      type: error
+      message: 'requests.send: fetch failed'
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  error:
+    message: 'requests.send: fetch failed'
+- id: feb126af-b224-4d50-a9de-f64082367804
+  timestamp: 1789180431078
+  envName: development
+  network:
+    - timeMs: 0.01714199990965426
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.23103899997659028
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.889277999987826
+      type: error
+      message: 'requests.send: fetch failed'
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+        "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  error:
+    message: 'requests.send: fetch failed'
+- id: a6024df2-26cd-442b-a6c2-332dab2683d5
+  timestamp: 1789180408754
+  envName: development
+  network:
+    - timeMs: 0.024295000010170043
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.30232000001706183
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 3.6984360000351444
+      type: error
+      message: 'requests.send: fetch failed'
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+         "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  error:
+    message: 'requests.send: fetch failed'
+- id: cf3fefa5-b076-4b45-a967-a061dd1b9c36
+  timestamp: 1789180406645
+  envName: development
+  network:
+    - timeMs: 0.015539000043645501
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.19424900005105883
+      type: request
+      message: POST http://localhost:8080/v1/subscriptions
+    - timeMs: 4.844786999979988
+      type: error
+      message: 'requests.send: fetch failed'
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscriptions
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+         "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  error:
+    message: 'requests.send: fetch failed'
+- id: 3cf0d6fb-2aa2-4a55-8ff7-6a46ec54d8c8
+  timestamp: 1789180388369
+  envName: development
+  network:
+    - timeMs: 0.02556800004094839
+      type: proxy
+      message: 'Proxy: direct'
+    - timeMs: 0.29593800008296967
+      type: request
+      message: POST http://localhost:8080/v1/subscribe
+    - timeMs: 3.648784000077285
+      type: response
+      message: 404 Not Found - 4 headers
+    - timeMs: 3.7170000000623986
+      type: body
+      message: Body received - 19 bytes
+    - timeMs: 3.721317999996245
+      type: complete
+      message: Completed in 4ms
+  request:
+    id: create-subscription
+    name: Create Subscription
+    method: POST
+    url: http://localhost:8080/v1/subscribe
+    headers: {}
+    params: []
+    pathParams: []
+    body: |-
+      {
+         "tournamentId": "abc"
+      }
+    bodyType: json
+    auth:
+      type: bearer
+      token: '[REDACTED]'
+  response:
+    status: 404
+    statusText: Not Found
+    headers:
+      content-length: '19'
+      content-type: text/plain; charset=utf-8
+      date: Sat, 12 Sep 2026 02:33:08 GMT
+      x-content-type-options: nosniff
+    body: |
+      404 page not found
+    timeMs: 3.7402129999827594
+    size: 19

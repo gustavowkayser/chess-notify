@@ -1,0 +1,14 @@
+name: Create Subscription
+method: POST
+url: $host/v1/subscriptions
+timeout: 0
+followRedirects: true
+maxRedirects: 5
+body: |-
+  {
+    "tournamentUrl": "https://s1.chess-results.com/tnr1495638.aspx"
+  }
+body_type: json
+auth:
+  type: bearer
+  token: $device_token

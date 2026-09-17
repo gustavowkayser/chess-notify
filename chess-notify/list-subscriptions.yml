@@ -1,0 +1,11 @@
+name: List Subscriptions
+method: GET
+url: $host/v1/subscriptions
+timeout: 0
+followRedirects: true
+maxRedirects: 5
+body: ''
+body_type: none
+auth:
+  type: bearer
+  token: $device_token

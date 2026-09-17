@@ -1,0 +1,33 @@
+package device
+
+type RegisterDeviceRequest struct {
+	PushToken string `json:"pushToken"`
+	Platform string `json:"platform"`
+	AppVersion string `json:"appVersion"`
+}
+
+type RegisterDeviceResponse struct {
+	DeviceID string `json:"deviceId"`
+	DeviceToken string `json:"deviceToken"`
+}
+
+type UpdateDeviceRequest struct {
+	PushToken string `json:"pushToken"`
+	DeviceToken string `json:"deviceToken"`
+}
+
+type UpdateDeviceResponse struct {
+	DeviceID string `json:"deviceId"`
+}
+
+type UpsertDeviceRequest struct {
+	PushToken string `json:"pushToken"`
+	Platform string `json:"platform"`
+	AppVersion string `json:"appVersion"`
+	Active bool `json:"active"`
+}
+
+type UpsertDeviceResponse struct {
+	DeviceID string `json:"deviceId"`
+	DeviceToken string `json:"deviceToken"`
+}
