@@ -18,6 +18,7 @@ const icons = {
     globe: { ios: "globe", android: "globe" },
     chevronDown: { ios: "chevron.down", android: "keyboard_arrow_down" },
     chevronUp: { ios: "chevron.up", android: "keyboard_arrow_up" },
+    dots: { ios: "ellipsis", android: "more_horiz" },
 } as const satisfies Record<string, { ios: SFSymbol; android: AndroidSymbol }>;
 
 export type IconName = keyof typeof icons;

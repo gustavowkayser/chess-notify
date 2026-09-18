@@ -1,56 +1,192 @@
-# Welcome to your Expo app 👋
+# Chess Notify - Mobile Frontend
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+The mobile application for **Chess Notify** is built with [React Native](https://reactnative.dev) and [Expo](https://expo.dev). It allows chess players, arbiters, and coaches to track tournaments hosted on [chess-results.com](https://chess-results.com), follow round pairings, and receive instant push notifications whenever a new round is published.
 
-## Get started
+---
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+- 🔍 **Live Search & URL Pasting**: Search for tournaments directly by name or paste any `chess-results.com` tournament URL.
+- ♟️ **Tournament Tracking**: View subscribed tournaments with real-time round status badges (`Upcoming`, `Ongoing`, `Final Round`) and visual round progress bars.
+- 🔔 **Push Notifications**: Receive background push notifications when pairings for the next round are published. Easily toggle notifications on or off globally with server synchronization.
+- 🌐 **Multi-Language Support (i18n)**: Fully localized in **English (`en`)**, **Portuguese (`pt`)**, and **Spanish (`es`)**, with device language auto-detection and an instant in-app language switcher.
+- 🎨 **Glassmorphism Dark Theme**: Modern dark design system powered by Tailwind CSS / NativeWind and Expo Blur.
+- 🛡️ **Zero-Login Authentication**: Generates and securely stores device credentials via `expo-secure-store`. No username or password required.
+- 📱 **In-App Pairing Browser**: Tap any tournament card to open the pairings directly in an integrated in-app browser (`expo-web-browser`).
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## Architecture
 
-In the output, you'll find options to open the app in a
+The frontend follows **Clean Architecture (Hexagonal Architecture)** principles to keep UI components, application logic, and infrastructure/API concerns cleanly decoupled:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+frontend/src/
+├── app/                           # Expo Router file-based routing
+│   ├── _layout.tsx                # Root layout, fonts & notification provider
+│   └── (tabs)/
+│       ├── _layout.tsx            # Tab navigation layout
+│       └── index.tsx              # Main entry screen
+├── application/                   # Application layer (Use Cases)
+│   ├── ports/                     # Input & output interfaces
+│   └── useCases/
+│       ├── CreateDeviceUseCase.ts
+│       ├── ListSubscriptionsUseCase.ts
+│       ├── SearchTournamentsUseCase.ts
+│       ├── SubscribeToTournamentUseCase.ts
+│       └── UnsubscribeUseCase.ts
+├── domain/                        # Domain entities, value objects & business rules
+│   ├── entities/
+│   │   ├── Subscription.ts        # Subscription entity
+│   │   └── Tournament.ts          # Tournament entity & status calculation
+│   ├── errors/
+│   │   └── DomainError.ts         # Domain error types
+│   ├── repositories/
+│   │   └── SubscriptionRepository.ts # Repository contract
+│   └── valueObjects/
+│       └── TournamentLink.ts      # URL parser, validator & normalizer
+├── infrastructure/                # External services & concrete implementations
+│   ├── http/
+│   │   └── apiError.ts            # HTTP error mapping
+│   ├── i18n/                      # Localization engine
+│   │   ├── i18n.ts                # i18next initialization
+│   │   └── locales/               # Translations: en.json, es.json, pt.json
+│   ├── repositories/
+│   │   └── HttpSubscriptionRepository.ts # Concrete API repository
+│   ├── services/
+│   │   ├── api.ts                 # Axios client with SecureStore auth interceptor
+│   │   └── deviceService.ts       # Device upsert API client
+│   └── storage/
+│       ├── languagePreference.ts  # AsyncStorage language persistence
+│       └── notificationPreference.ts # Notification state storage
+├── main/
+│   └── container.ts               # Composition root (Dependency Injection container)
+├── presentation/                  # UI Components, Screens, Hooks & Design Tokens
+│   ├── components/
+│   │   ├── home/                  # HomeHeader, NotificationToggle, NotificationButton
+│   │   ├── language/              # LanguageDropdown, LanguageExpandableButton
+│   │   ├── search/                # SearchBar, SearchDrawer, SearchResults
+│   │   ├── subscriptions/         # TournamentCard, RoundProgress, StatusChip, Skeleton
+│   │   └── ui/                    # AppText, GlassButton, GlassSurface, Icon, Toggle
+│   ├── context/
+│   │   └── NotificationContext.tsx # Expo Push Token & permissions state
+│   ├── formatters/                # Error & tournament text formatters
+│   ├── hooks/                     # Custom React hooks
+│   │   ├── useDevice.ts           # Device registration & notification toggle hook
+│   │   ├── useLanguage.ts         # Language switcher hook
+│   │   ├── useSubscriptions.ts    # Subscriptions query, mutate & pull-to-refresh
+│   │   └── useTournamentSearch.ts # Live search debouncing & link submission
+│   ├── screens/
+│   │   └── HomeScreen.tsx         # Main dashboard screen
+│   └── theme/
+│       └── tokens.ts              # Theme color palette & tokens
+└── utils/
+    └── registerPushNotifications.ts # Expo push token request & Android channel setup
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-### Other setup steps
+## Tech Stack
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+| Technology | Purpose |
+| :--- | :--- |
+| **React Native (0.86)** | Core mobile framework |
+| **Expo SDK (v57)** | Universal native runtime and tooling |
+| **Expo Router** | File-based routing navigation |
+| **NativeWind v5 / Tailwind CSS v4** | Utility-first styling system |
+| **React Native Reanimated (v4)** | Fluid UI transitions and micro-interactions |
+| **Expo Blur & Glass Effect** | Glassmorphism surfaces and backdrops |
+| **Expo Notifications** | Native push notifications & notification channels |
+| **Expo Secure Store** | Keychain / Keystore encrypted token persistence |
+| **Axios** | HTTP client with automatic bearer token authorization interceptors |
+| **i18next & react-i18next** | Internationalization supporting English, Portuguese, Spanish |
+| **Biome** | Modern linter and code formatter |
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## Getting Started
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 1. Prerequisites
 
-## Join the community
+- [Node.js](https://nodejs.org) (v20+) or [Bun](https://bun.sh)
+- iOS Simulator (macOS with Xcode) or Android Emulator (Android Studio), or a physical device with the **Expo Go** app installed.
+- Backend service running (see [`backend/README.md`](../backend/README.md)).
 
-Join our community of developers creating universal apps.
+### 2. Install Dependencies
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Using `bun`:
+```bash
+bun install
+```
+
+Or using `npm`:
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the `frontend/` directory:
+
+```bash
+EXPO_PUBLIC_API_URL=http://<YOUR_LOCAL_IP>:8080
+```
+
+> [!NOTE]
+> If testing on an **Android Emulator**, use `http://10.0.2.2:8080`.  
+> If testing on a **physical device**, use your computer's LAN IP (e.g., `http://192.168.1.50:8080`).
+
+---
+
+## Running the App
+
+### Start the Expo Dev Server
+
+```bash
+bun run start
+# or: npx expo start
+```
+
+Once running, press:
+- `a` to open on an Android Emulator
+- `i` to open on an iOS Simulator
+- Scan the QR code with **Expo Go** on your physical mobile device
+
+### Native Development Builds
+
+To run full native builds with native modules:
+
+```bash
+# Android
+bun run android
+
+# iOS
+bun run ios
+```
+
+---
+
+## Push Notifications Setup
+
+Push notifications require an Expo Application Services (EAS) project.
+
+1. Install EAS CLI:
+   ```bash
+   npm install -g eas-cli
+   ```
+2. Log in to your Expo account:
+   ```bash
+   eas login
+   ```
+3. Push notification credentials for Android use Firebase Cloud Messaging (`google-services.json` included in the project root).
+4. Physical devices are required to receive push notifications. When prompted upon opening the app, grant notification permissions.
+
+---
+
+## Code Quality & Linting
+
+Run Biome linter:
+
+```bash
+bun run lint
+```

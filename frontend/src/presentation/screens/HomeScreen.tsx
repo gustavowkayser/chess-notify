@@ -7,7 +7,9 @@ import {
     BackHandler,
     FlatList,
     Keyboard,
+    Pressable,
     RefreshControl,
+    StyleSheet,
     type TextInput,
     View,
 } from "react-native";
@@ -15,7 +17,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import type { Subscription } from "@/domain/entities/Subscription";
 import type { Tournament } from "@/domain/entities/Tournament";
 import { HomeHeader } from "@/presentation/components/home/HomeHeader";
-import { NotificationToggle } from "@/presentation/components/home/NotificationToggle";
 import { SearchBar } from "@/presentation/components/search/SearchBar";
 import { SearchDrawer } from "@/presentation/components/search/SearchDrawer";
 import { SearchResults } from "@/presentation/components/search/SearchResults";
@@ -37,6 +38,7 @@ export default function HomeScreen() {
     const inputRef = useRef<TextInput>(null);
     const [headerHeight, setHeaderHeight] = useState(0);
     const [isSearching, setSearching] = useState(false);
+    const [isLanguageOpen, setIsLanguageOpen] = useState(false);
     const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<
         string | null
     >(null);
@@ -78,20 +80,27 @@ export default function HomeScreen() {
     }, [expoPushToken]);
 
     useEffect(() => {
-        if (!isSearching) {
+        if (!isSearching && !isLanguageOpen) {
             return;
         }
 
         const subscription = BackHandler.addEventListener(
             "hardwareBackPress",
             () => {
-                closeSearch();
-                return true;
+                if (isLanguageOpen) {
+                    setIsLanguageOpen(false);
+                    return true;
+                }
+                if (isSearching) {
+                    closeSearch();
+                    return true;
+                }
+                return false;
             },
         );
 
         return () => subscription.remove();
-    }, [isSearching]);
+    }, [isSearching, isLanguageOpen]);
 
     const closeSearch = () => {
         inputRef.current?.blur();
@@ -214,26 +223,41 @@ export default function HomeScreen() {
     return (
         <View className="flex-1 bg-background">
             <BlurTargetView ref={blurTarget} style={{ flex: 1 }}>
+                {isLanguageOpen && (
+                    <Pressable
+                        accessibilityLabel="Close language menu"
+                        style={styles.languageBackdrop}
+                        onPress={() => setIsLanguageOpen(false)}
+                    />
+                )}
+
                 <View
                     onLayout={(event) =>
                         setHeaderHeight(event.nativeEvent.layout.height)
                     }
                     className="gap-4 px-5 pb-3 mt-4"
-                    style={{ paddingTop: insets.top + 8 }}
+                    style={{ paddingTop: insets.top + 8, zIndex: 10 }}
                 >
-                    <HomeHeader />
-                    <NotificationToggle
-                        enabled={notificationsEnabled}
-                        isAvailable={expoPushToken !== null}
-                        isUpdating={isUpdatingNotifications}
-                        onChange={changeNotifications}
+                    <HomeHeader
+                        notificationsEnabled={notificationsEnabled}
+                        isNotificationsAvailable={expoPushToken !== null}
+                        isUpdatingNotifications={isUpdatingNotifications}
+                        onToggleNotifications={changeNotifications}
+                        isLanguageOpen={isLanguageOpen}
+                        onToggleLanguage={() =>
+                            setIsLanguageOpen((current) => !current)
+                        }
+                        onCloseLanguage={() => setIsLanguageOpen(false)}
                     />
                     <SearchBar
                         inputRef={inputRef}
                         value={search.query}
                         isActive={isSearching}
                         onChangeText={search.changeQuery}
-                        onFocus={() => setSearching(true)}
+                        onFocus={() => {
+                            setIsLanguageOpen(false);
+                            setSearching(true);
+                        }}
                         onCancel={closeSearch}
                         onSubmit={subscribeToLink}
                     />
@@ -243,6 +267,7 @@ export default function HomeScreen() {
                     data={status === "ready" ? subscriptions : []}
                     keyExtractor={({ id }) => id}
                     extraData={expandedSubscriptionId}
+                    onScrollBeginDrag={() => setIsLanguageOpen(false)}
                     renderItem={({ item }) => (
                         <TournamentCard
                             subscription={item}
@@ -308,3 +333,10 @@ export default function HomeScreen() {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    languageBackdrop: {
+        ...StyleSheet.absoluteFill,
+        zIndex: 5,
+    },
+});

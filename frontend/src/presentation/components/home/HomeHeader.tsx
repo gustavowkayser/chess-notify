@@ -1,35 +1,41 @@
-import { useTranslation } from "react-i18next";
 import { View } from "react-native";
-import { LanguageDropdown } from "@/presentation/components/language/LanguageDropdown";
-import { AppText } from "@/presentation/components/ui/AppText";
-import { GlassSurface } from "@/presentation/components/ui/GlassSurface";
-import { Icon } from "@/presentation/components/ui/Icon";
-import { colors, radii } from "@/presentation/theme/tokens";
+import { NotificationButton } from "@/presentation/components/home/NotificationButton";
+import { LanguageExpandableButton } from "@/presentation/components/language/LanguageExpandableButton";
 
 export type AlertsStatus = "on" | "off" | "pending";
 
-export function HomeHeader() {
-    const { t } = useTranslation();
+interface HomeHeaderProps {
+    notificationsEnabled: boolean;
+    isNotificationsAvailable: boolean;
+    isUpdatingNotifications: boolean;
+    onToggleNotifications: (enabled: boolean) => void;
+    isLanguageOpen?: boolean;
+    onToggleLanguage?: () => void;
+    onCloseLanguage?: () => void;
+}
 
+export function HomeHeader({
+    notificationsEnabled,
+    isNotificationsAvailable,
+    isUpdatingNotifications,
+    onToggleNotifications,
+    isLanguageOpen,
+    onToggleLanguage,
+    onCloseLanguage,
+}: HomeHeaderProps) {
     return (
         <View className="flex-row items-center justify-between">
-            <GlassSurface
-                radius={radii.full}
-                className="h-11 flex-row items-center gap-2 pl-1.5 pr-4"
-            >
-                <View
-                    className="h-8 w-8 items-center justify-center rounded-full"
-                    style={{
-                        backgroundColor: colors.glow,
-                        boxShadow: "0 0 12px rgba(27, 69, 255, 0.6)",
-                    }}
-                >
-                    <Icon name="knight" size={16} />
-                </View>
-                <AppText variant="label">{t("app.title")}</AppText>
-            </GlassSurface>
-
-            <LanguageDropdown />
+            <NotificationButton
+                enabled={notificationsEnabled}
+                isAvailable={isNotificationsAvailable}
+                isUpdating={isUpdatingNotifications}
+                onChange={onToggleNotifications}
+            />
+            <LanguageExpandableButton
+                isOpen={isLanguageOpen}
+                onToggle={onToggleLanguage}
+                onClose={onCloseLanguage}
+            />
         </View>
     );
 }
