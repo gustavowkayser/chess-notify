@@ -21,17 +21,14 @@ func NewExponent() Provider {
 
 func (e *Exponent) Send(
 	ctx context.Context,
-	pushToken string,
-	title string,
-	body string,
-	data map[string]string,
+	notification Notification,
 ) error {
-	tkn := exponent.MustParseToken(pushToken)
+	tkn := exponent.MustParseToken(notification.DevicePushToken)
 	res, err := e.client.PublishSingle(ctx, &exponent.Message{
 		To:       []*exponent.Token{tkn},
-		Title:    title,
-		Body:     body,
-		Data:     data,
+		Title:    notification.Title,
+		Body:     notification.Message,
+		Data:     notification.Data,
 		Sound:    "default",
 		Priority: exponent.HighPriority,
 	})

@@ -21,6 +21,7 @@ func (app *App) routes() http.Handler {
 		r.Delete("/v1/subscriptions/{id}", app.SubscriptionHandler.RemoveSubscription)
 		r.Get("/v1/subscriptions", app.SubscriptionHandler.ListSubscriptions)
 		r.Get("/v1/tournaments", app.TournamentHandler.SearchTournaments)
+		r.Get("/v1/notifications", app.NotificationHandler.List)
 	})
 
 	return router

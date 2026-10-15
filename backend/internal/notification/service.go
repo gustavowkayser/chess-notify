@@ -7,7 +7,7 @@ import (
 )
 
 type Provider interface {
-	Send(context.Context, string, string, string, map[string]string) error
+	Send(context.Context, Notification) error
 }
 
 type Service struct {
@@ -33,13 +33,23 @@ func (s *Service) SendNotification(
 	}
 
 	for _, sub := range *subs {
-		err := s.provider.Send(
-			ctx,
-			sub.DevicePushToken,
-			"Nova rodada: "+sub.TournamentName,
-			fmt.Sprintf("Rodada %d de %d emparceirada", sub.TournamentRound, sub.TournamentTotal),
-			map[string]string{},
-		)
+		notification := Notification{
+			TournamentID:    tournamentId,
+			DevicePushToken: sub.DevicePushToken,
+			Title:           "Nova rodada: " + sub.TournamentName,
+			Message:         fmt.Sprintf("Rodada %d de %d emparceirada", sub.TournamentRound, sub.TournamentTotal),
+			Data:            map[string]string{},
+		}
+
+		// Outbox Pattern
+		err := s.repository.CreateNotification(ctx, notification)
+
+		if err != nil {
+			log.Printf("Error trying to notify device: %s\n", sub.DeviceID)
+			continue
+		}
+
+		err = s.provider.Send(ctx, notification)
 
 		log.Printf("Notification sent to %s\n", sub.DevicePushToken)
 
@@ -50,4 +60,12 @@ func (s *Service) SendNotification(
 	}
 
 	return nil
+}
+
+func (s *Service) List(ctx context.Context, deviceId string) (*[]Notification, error) {
+	notifications, err := s.repository.ListNotifications(ctx, deviceId)
+	if err != nil {
+		return nil, err
+	}
+	return notifications, nil
 }

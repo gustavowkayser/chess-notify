@@ -20,6 +20,7 @@ type App struct {
 	DeviceHandler       *device.Handler
 	SubscriptionHandler *subscription.Handler
 	TournamentHandler   *tournament.Handler
+	NotificationHandler *notification.Handler
 	AuthMiddleware  func(http.Handler) http.Handler
 	LogMiddleware   func(http.Handler) http.Handler
 	TournamentJob   *tournament.Job
@@ -52,6 +53,7 @@ func New() (*App, error) {
 
 	notificationRepository := notification.NewRepository(db)
 	notificationService := notification.NewService(notificationRepository, notificationProvider)
+	notificationHandler := notification.NewHandler(notificationService)
 
 	deviceRepository := device.NewRepository(db)
 	deviceService := device.NewService(deviceRepository, argon2config)
@@ -78,6 +80,7 @@ func New() (*App, error) {
 		DB:                  db,
 		DeviceHandler:       deviceHandler,
 		SubscriptionHandler: subscriptionHandler,
+		NotificationHandler: notificationHandler,
 		AuthMiddleware:      authMiddleware,
 		LogMiddleware:       logMiddleware,
 		TournamentJob:       tournamentJob,

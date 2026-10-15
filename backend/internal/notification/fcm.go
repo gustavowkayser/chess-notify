@@ -14,7 +14,7 @@ type FCM struct {
 
 func NewFCM(ctx context.Context, credentialsPath string) (Provider, error) {
 	opt := option.WithAuthCredentialsFile(
-		option.ServiceAccount, 
+		option.ServiceAccount,
 		"./.secrets/firebase-service-account.json",
 	)
 	app, err := firebase.NewApp(ctx, nil, opt)
@@ -36,16 +36,13 @@ func NewFCM(ctx context.Context, credentialsPath string) (Provider, error) {
 
 func (f *FCM) Send(
 	ctx context.Context,
-	token string,
-	title string,
-	body string,
-	data map[string]string,
+	notification Notification,
 ) error {
 	message := &messaging.Message{
-		Token: token,
+		Token: notification.DevicePushToken,
 		Notification: &messaging.Notification{
-			Title: title,
-			Body: body,
+			Title: notification.Title,
+			Body:  notification.Message,
 		},
 	}
 
